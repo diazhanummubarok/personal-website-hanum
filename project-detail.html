@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Detail | Diaz Hanum Mubarok</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #faecf3;
+      --surface: #ffffff;
+      --surface-soft: #fff7fb;
+      --heading: #543884;
+      --pink: #d25380;
+      --pink-light: #f6dce7;
+      --yellow: #f5a718;
+      --text: #45474b;
+      --muted: #77717d;
+      --border: rgba(84, 56, 132, 0.15);
+      --shadow: 0 16px 40px rgba(84, 56, 132, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Poppins", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    
+/* JARAK KONTEN SEMUA HALAMAN */
+.container {
+  width: calc(100% - 80px);
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Pastikan semua bagian mengikuti lebar container */
+.view,
+.view > .hero,
+.view > .section {
+  min-width: 0;
+}
+
+.view .hero,
+.view .section {
+  box-sizing: border-box;
+}
+
+/* Tampilan tablet */
+@media (max-width: 900px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+}
+
+/* Tampilan HP */
+@media (max-width: 520px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+}
+
+    /* HALAMAN DETAIL */
+    .view {
+      display: none;
+      animation: fadeUp 0.45s ease;
+    }
+
+    .view.active {
+      display: block;
+      padding-top: 50px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 62px);
+      border-radius: 30px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -125px;
+      right: -95px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: var(--pink-light);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: 110px;
+      bottom: -125px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(245, 167, 24, 0.17);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--pink);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--yellow);
+    }
+
+    h1, h2, h3 {
+      color: var(--heading);
+      font-family: "Gilda Display", Georgia, serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0 0 18px;
+      font-size: clamp(40px, 6vw, 70px);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 43px);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 25px;
+    }
+
+    .pink-text {
+      color: var(--pink);
+    }
+
+    .hero-description {
+      max-width: 740px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .tag {
+      padding: 8px 13px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: var(--surface-soft);
+      color: var(--heading);
+      font-size: 11px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .tag:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 15px rgba(210, 83, 128, 0.2);
+    }
+
+    /* BAGIAN KONTEN */
+    .section {
+      padding: 55px 0 10px;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 0 0 25px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* KARTU PENGALAMAN */
+    .experience-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .experience-card {
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr);
+      gap: 22px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 8px 25px rgba(84, 56, 132, 0.04);
+      transition: 0.3s;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 35px rgba(210, 83, 128, 0.15);
+    }
+
+    .number-icon {
+      display: grid;
+      place-items: center;
+      width: 65px;
+      height: 65px;
+      border-radius: 19px;
+      background: var(--pink-light);
+      color: var(--heading);
+      font-size: 23px;
+    }
+
+    .card-kicker {
+      margin: 0 0 6px;
+      color: var(--pink);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .experience-card p:not(.card-kicker) {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* PLACEHOLDER DOKUMENTASI TEACHING */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .media-placeholder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      min-height: 125px;
+      padding: 15px;
+      border: 1px dashed rgba(84, 56, 132, 0.35);
+      border-radius: 15px;
+      background: var(--surface-soft);
+      color: var(--heading);
+      text-align: center;
+    }
+
+    .media-placeholder .symbol {
+      font-size: 25px;
+    }
+
+    .media-placeholder strong {
+      font-size: 11px;
+    }
+
+    .media-placeholder small {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+/* DOKUMENTASI ASISTENSI MENGAJAR */
+.assistensi-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+  align-items: stretch;
+}
+
+.assistensi-media-item {
+  min-width: 0;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.assistensi-media-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 220px;
+  border: 1px dashed rgba(84, 56, 132, 0.3);
+  border-radius: 12px;
+  background: var(--pink-light);
+  color: var(--heading);
+  text-align: center;
+}
+
+.assistensi-media-placeholder .symbol {
+  font-size: 34px;
+}
+
+.assistensi-media-placeholder strong {
+  font-size: 12px;
+}
+
+.assistensi-media-placeholder small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.assistensi-media-item video {
+  display: block;
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  background: #26222c;
+  object-fit: contain;
+}
+
+.assistensi-media-caption {
+  margin: 9px 2px 2px;
+  color: var(--heading);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .assistensi-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tutoring-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .assistensi-media-placeholder,
+  .assistensi-media-item video {
+    height: 240px;
+  }
+}
+    
+/* MICROTEACHING: 2 KOLOM SEJAJAR */
+.microteaching-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+  align-items: stretch;
+}
+
+.microteaching-media-item {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface-soft);
+}
+
+/* KOTAK VIDEO MICROTEACHING */
+.microteaching-video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: 14px;
+  background: var(--pink-light);
+  color: var(--heading);
+}
+
+.media-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #26222c;
+}
+
+.media-caption {
+  margin: 9px 2px 2px;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Video memenuhi bingkai tanpa mengubah proporsi */
+.microteaching-video-placeholder video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+  background: #26222c;
+}
+
+/* Placeholder sebelum video dimasukkan */
+.microteaching-video-placeholder .symbol {
+  font-size: 40px;
+}
+
+.microteaching-video-placeholder strong {
+  font-size: 13px;
+}
+
+.microteaching-video-placeholder small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.microteaching-caption {
+  margin: 10px 2px 0;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .microteaching-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FOTO DAN VIDEO ASLI */
+.media-photo,
+.media-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #26222c;
+}
+
+/* FOTO */
+.media-photo {
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.media-photo:hover {
+  transform: scale(1.02);
+}
+
+/* VIDEO MICROTEACHING */
+.media-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #26222c;
+}
+
+/* KETERANGAN MEDIA */
+.media-caption {
+  margin: 9px 2px 2px;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.media-caption {
+  margin: 9px 2px 2px;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.media-item {
+  min-width: 0;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-soft);
+}
+
+.media-grid .media-item {
+  align-self: start;
+}
+
+@media (max-width: 760px) {
+  .media-photo,
+  .media-video {
+    height: auto;
+    max-height: 350px;
+  }
+}
+
+/* PERBAIKAN TEACHING PRACTICE: 3 KOTAK SEJAJAR */
+.teaching-practice-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+  align-items: stretch;
+}
+
+.teaching-practice-media-grid .media-item {
+  min-width: 0;
+  padding: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-soft);
+  box-sizing: border-box;
+}
+
+/* Foto kiri dan kanan dibuat sama tinggi dengan video */
+.teaching-practice-media-grid .media-photo,
+.teaching-practice-media-grid .teaching-practice-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  max-height: none;
+  border-radius: 12px;
+  background: #26222c;
+  box-sizing: border-box;
+}
+
+/* Foto memenuhi area kotak */
+.teaching-practice-media-grid .media-photo {
+  object-fit: cover;
+}
+
+/* Video mengisi kotak dengan proporsi yang konsisten */
+.teaching-practice-media-grid .teaching-practice-video {
+  object-fit: contain;
+}
+
+/* Caption setiap kotak */
+.teaching-practice-media-grid .media-caption {
+  margin: 9px 2px 2px;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .teaching-practice-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+/* HP */
+@media (max-width: 600px) {
+  .teaching-practice-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+    .note {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 12px 12px 0;
+      background: rgba(245, 167, 24, 0.13);
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    .quote {
+      margin: 35px 0 0;
+      color: var(--heading);
+      font-family: "Gilda Display", Georgia, serif;
+      font-size: 25px;
+      text-align: center;
+    }
+
+    /* PROGRAM TUTORING */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .program-card {
+      padding: 21px 18px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: var(--surface);
+      transition: 0.3s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 13px 27px rgba(84, 56, 132, 0.11);
+    }
+
+    .program-icon {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 13px;
+      border-radius: 14px;
+      background: var(--pink-light);
+      font-size: 22px;
+    }
+
+    .program-card h3 {
+      margin-bottom: 7px;
+      font-size: 22px;
+    }
+
+    .program-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .mode-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+
+    .mode-card .number-icon {
+      flex-shrink: 0;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      font-size: 23px;
+    }
+
+    .mode-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* DOKUMENTASI TUTORING */
+    .tutoring-media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .tutoring-media-card {
+      overflow: hidden;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: 0 8px 25px rgba(84, 56, 132, 0.05);
+      transition: 0.3s;
+    }
+
+    .tutoring-media-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .tutoring-media-frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 13px;
+      background: var(--pink-light);
+      color: var(--heading);
+      text-align: center;
+    }
+
+    .tutoring-media-frame .media-placeholder-content {
+      padding: 15px;
+    }
+
+    .tutoring-media-frame .symbol {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 30px;
+    }
+
+    .tutoring-media-frame strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .tutoring-media-frame small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .tutoring-media-card h3 {
+      margin: 13px 5px 3px;
+      font-size: 21px;
+    }
+
+    .tutoring-media-card p {
+      margin: 0 5px 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Jika placeholder diganti dengan foto atau video */
+    .tutoring-media-frame img,
+    .tutoring-media-frame video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .price-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 21px;
+      background: var(--surface);
+      transition: 0.3s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--pink);
+      box-shadow: var(--shadow);
+    }
+
+    .price-label {
+      color: var(--pink);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .price-card h3 {
+      margin: 8px 0;
+    }
+
+    .price {
+      margin: 16px 0 3px;
+      color: var(--heading);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .price-note {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* PILIHAN TARIF ONLINE DAN OFFLINE */
+    .price-options {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    
+    .price-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--surface-soft);
+    }
+
+    .price-private-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 11px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .price-option span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .price-option strong {
+      color: var(--heading);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .price-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* KONTAK TUTORING */
+    .contact-banner {
+      position: relative;
+      overflow: hidden;
+      margin: 55px 0 0;
+      padding: clamp(28px, 5vw, 48px);
+      border-radius: 27px;
+      background: var(--heading);
+      color: white;
+      text-align: center;
+    }
+
+    .contact-banner::before {
+      content: "✦";
+      position: absolute;
+      top: -28px;
+      right: 30px;
+      color: rgba(245, 167, 24, 0.25);
+      font-size: 95px;
+    }
+
+    .contact-banner h2 {
+      color: white;
+    }
+
+    .contact-banner p {
+      max-width: 570px;
+      margin: 0 auto 22px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+    }
+
+    /* DETAIL MEDIA PEMBELAJARAN */
+    .media-detail-card {
+      padding: clamp(20px, 4vw, 35px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: 0 8px 25px rgba(84, 56, 132, 0.05);
+    }
+
+    .media-preview {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      min-height: 250px;
+      margin: 24px 0;
+      padding: 25px;
+      border: 2px dashed rgba(84, 56, 132, 0.3);
+      border-radius: 20px;
+      background: var(--surface-soft);
+      color: var(--heading);
+      text-align: center;
+    }
+
+    .media-preview .preview-icon {
+      font-size: 45px;
+    }
+
+    .media-preview strong {
+      font-size: 14px;
+    }
+
+    .media-preview span {
+      max-width: 400px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .media-description {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .media-features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .feature-item {
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface-soft);
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--heading);
+      font-size: 12px;
+    }
+
+    .feature-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* ================= CREATIVE DESIGN GALLERY ================= */
+    .creative-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .creative-item {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      transition: 0.3s;
+    }
+
+    .creative-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(210, 83, 128, 0.15);
+    }
+
+    .creative-image {
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      padding: 20px;
+      background: var(--pink-light);
+      color: var(--heading);
+      text-align: center;
+    }
+
+    .creative-image .symbol {
+      margin-bottom: 10px;
+      font-size: 38px;
+    }
+
+    .creative-image strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .creative-image small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .creative-item-info {
+      padding: 18px;
+    }
+
+    .creative-item-info h3 {
+      margin-bottom: 7px;
+      font-size: 22px;
+    }
+
+    .creative-item-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .creative-store-note {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 15px;
+      background: var(--surface-soft);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .creative-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .creative-image {
+        min-height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .creative-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* TOMBOL */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .cta {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 50px;
+      background: var(--pink);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(210, 83, 128, 0.3);
+    }
+
+    .cta.secondary {
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--heading);
+    }
+
+    .cta.secondary:hover {
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      padding: 30px 0 35px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      .program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .pricing-grid,
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .media-placeholder {
+        min-height: 90px;
+      }
+
+      .hero {
+        border-radius: 22px;
+      }
+
+      .media-features {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 20px;
+      }
+
+      .number-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 16px;
+      }
+
+      .program-card {
+        padding: 17px 14px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .button-row .cta {
+        width: 100%;
+      }
+
+      .media-preview {
+        min-height: 190px;
+      }
+    }
+    
+      /* GALERI MEDIA SPACEMATH */
+      .spacemath-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        width: 100%;
+        margin: 26px 0;
+        align-items: start;
+      }
+
+      .spacemath-media {
+        min-width: 0;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface-soft);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .spacemath-media:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 24px rgba(84, 56, 132, 0.12);
+      }
+
+      .spacemath-image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #f7dce8;
+      }
+
+      .spacemath-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .spacemath-media h3 {
+        margin: 14px 2px 6px;
+        color: var(--heading);
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .spacemath-media p {
+        margin: 0 2px 4px;
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+    /* TAMPILAN HP */
+    @media (max-width: 760px) {
+      .spacemath-gallery {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .spacemath-media {
+        padding: 12px;
+      }
+    }
+
+    /* LKPD: PREVIEW POTRET */
+    #lkpd .creative-gallery {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+      gap: 20px;
+    }
+
+    #lkpd .creative-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    /* Supaya isi placeholder tetap berada di tengah */
+    #lkpd .creative-image > div {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Tampilan HP */
+    @media (max-width: 760px) {
+      #lkpd .creative-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      #lkpd .creative-image {
+        aspect-ratio: 3 / 4;
+      }
+    }
+  
+    #lkpd .creative-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* MATHOPIA BOOK: GAMBAR PERSEGI */
+    #mathopia .creative-gallery {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    #mathopia .creative-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #mathopia .creative-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    /* MATHOPIA DI HP */
+    @media (max-width: 760px) {
+      #mathopia .creative-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      #mathopia .creative-image {
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    /* DIGITAL STORYBOOK: GAMBAR PERSEGI */
+    #digital-storybooks .creative-gallery {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    #digital-storybooks .creative-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #digital-storybooks .creative-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    /* DIGITAL STORYBOOK DI HP */
+    @media (max-width: 760px) {
+      #digital-storybooks .creative-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      #digital-storybooks .creative-image {
+        aspect-ratio: 1 / 1;
+      }
+    }
+    
+    /* CLASSROOM DECORATIONS: UKURAN POTRET SEPERTI LKPD */
+    #classroom-decorations .creative-gallery {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    #classroom-decorations .creative-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      min-height: 0;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #classroom-decorations .creative-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    /* TAMPILAN HP */
+    @media (max-width: 760px) {
+      #classroom-decorations .creative-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      #classroom-decorations .creative-image {
+        aspect-ratio: 3 / 4;
+      }
+    }
+
+    /* DOKUMENTASI TUTORING */
+    .tutoring-documentation {
+      margin-top: 80px;
+      width: 100%;
+    }
+
+    .documentation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+      align-items: stretch;
+    }
+
+    .documentation-card {
+      min-width: 0;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .documentation-media {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 4 / 5;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #26222c;
+    }
+
+    .documentation-media img,
+    .documentation-media video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+    }
+
+    .documentation-media img {
+      object-fit: cover;
+    }
+
+    .documentation-media video {
+      object-fit: contain;
+    }
+
+    .documentation-card h3 {
+      margin: 16px 6px 4px;
+      color: var(--heading);
+      font-family: "Gilda Display", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .documentation-card p {
+      margin: 0 6px 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      .documentation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .documentation-card h3 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <main>
+
+      <!-- ================= TEACHING ================= -->
+      <section id="teaching" class="view">
+
+        <div class="hero">
+          <p class="eyebrow">My Teaching Journey</p>
+
+          <h1>
+            Teaching with
+            <span class="pink-text">Purpose.</span>
+          </h1>
+
+          <p class="hero-description">
+            Perjalanan saya dalam belajar menjadi seorang pendidik,
+            mulai dari praktik mengajar di kelas hingga terjun langsung
+            ke lingkungan sekolah. Setiap pengalaman menjadi kesempatan
+            untuk bertumbuh, mencoba hal baru, dan memahami kebutuhan siswa.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">✦ Microteaching</span>
+            <span class="tag">✦ Teaching Practice</span>
+            <span class="tag">✦ Asistensi Mengajar</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Learn by doing</p>
+          <h2>My Teaching Experiences</h2>
+
+          <p class="section-intro">
+            Berikut beberapa pengalaman yang menjadi bagian penting
+            dari perjalanan saya di dunia pendidikan.
+          </p>
+
+          <div class="experience-list">
+
+            <article class="experience-card">
+              <div class="number-icon">01</div>
+
+              <div>
+                <p class="card-kicker">Classroom Practice</p>
+                <h3>Microteaching</h3>
+
+                <p>
+                  Melalui kegiatan microteaching, saya berlatih menyusun
+                  materi, menyampaikan pembelajaran, mengelola kelas,
+                  serta membangun interaksi dengan siswa. Praktik dilakukan
+                  secara individu maupun kelompok sebagai bekal sebelum
+                  mengajar di sekolah.
+                </p>
+        
+<div class="microteaching-media-grid">
+
+  <!-- VIDEO PRAKTIK INDIVIDU -->
+<div class="media-item">
+  <video
+    class="media-video"
+    controls
+    preload="metadata"
+    playsinline
+  >
+    <source
+      src="microteaching individu.mp4"
+      type="video/mp4"
+    >
+    Browser kamu tidak mendukung pemutaran video.
+  </video>
+  <p class="media-caption">Video Praktik Microteaching Individu</p>
+</div>
+
+  <!-- VIDEO PRAKTIK KELOMPOK -->
+  <div class="media-item">
+  <video
+    class="media-video"
+    controls
+    preload="metadata"
+    playsinline
+  >
+    <source
+      src="microteaching kelompok.mp4"
+      type="video/mp4"
+    >
+    Browser kamu tidak mendukung pemutaran video.
+  </video>
+  <p class="media-caption">Video Praktik Microteaching Kelompok</p>
+  </div>
+
+</div>
+              </div>
+            </article>
+
+            <article class="experience-card">
+              <div class="number-icon">02</div>
+
+              <div>
+                <p class="card-kicker">Learning Media in Action</p>
+                <h3>Teaching Practice at School</h3>
+
+                <p>
+                  Praktik mengajar secara berkelompok di sekolah wilayah
+                  Poncokusumo, Kabupaten Malang. Dalam kegiatan ini, saya
+                  memperoleh pengalaman menerapkan media pembelajaran untuk
+                  membantu siswa memahami materi dengan cara yang lebih menarik.
+                </p>
+
+<!-- MEDIA TEACHING PRACTICE -->
+<div class="teaching-practice-media-grid">
+
+  <!-- KOTAK KIRI: FOTO SUASANA KELAS -->
+  <div class="media-item">
+    <img
+      class="media-photo"
+      src="foto tim poncokusumo.jpg"
+      alt="Dokumentasi praktik microteaching kelompok"
+      loading="lazy"
+    >
+    <p class="media-caption">Tim Praktik Poncokusumo</p>
+  </div>
+
+  <!-- KOTAK TENGAH: VIDEO KEGIATAN -->
+  <div class="media-item">
+  <video
+    class="teaching-practice-video"
+    controls
+    preload="metadata"
+    playsinline
+  >
+    <source
+      src="poncokusumo.mp4"
+      type="video/mp4"
+    >
+    Browser kamu tidak mendukung pemutaran video.
+  </video>
+  <p class="media-caption">Recap Praktik Pembelajaran Poncokusumo</p>
+  </div>
+
+  <!-- KOTAK KANAN: FOTO MEDIA PEMBELAJARAN -->
+  <div class="media-item">
+    <img
+      class="media-photo"
+      src="foto bersama 8a.jpg"
+      alt="Dokumentasi praktik microteaching kelompok"
+      loading="lazy"
+    >
+    <p class="media-caption">Foto Bersama Siswa Kelas VIII-A</p>
+  </div>
+
+</div>
+
+              </div>
+            </article>
+
+            <article class="experience-card">
+              <div class="number-icon">03</div>
+
+              <div>
+                <p class="card-kicker">One-Semester Experience</p>
+                <h3>Asistensi Mengajar</h3>
+
+                <p>
+                  Melalui program Asistensi Mengajar selama satu semester,
+                  saya mendapatkan kesempatan untuk terlibat langsung dalam
+                  kegiatan pembelajaran di sekolah. Pengalaman ini membantu
+                  saya memahami proses mengajar secara nyata, berinteraksi
+                  dengan siswa, dan belajar beradaptasi dengan lingkungan sekolah.
+                </p>
+              
+<div class="assistensi-media-grid">
+
+  <!-- KOTAK 1: FOTO KELAS VIII-D -->
+<div class="media-item">
+  <img
+    class="media-photo"
+    src="kelas 8d.jpg"
+    alt="Dokumentasi praktik microteaching kelompok"
+    loading="lazy"
+  >
+  <p class="media-caption">Foto Bersama Kelas VIII-D</p>
+</div>
+
+  <!-- KOTAK 2: VIDEO RECAP -->
+  <div class="assistensi-media-item">
+    <video controls playsinline preload="metadata">
+      <source
+        src="asistensi mengajar.mp4"
+        type="video/mp4"
+      >
+      Browser kamu tidak mendukung pemutaran video.
+    </video>
+    <p class="assistensi-media-caption">
+      Recap Selama Mengajar
+    </p>
+  </div>
+
+  <!-- KOTAK 3: FOTO KELAS VIII-E -->
+  <div class="media-item">
+  <img
+    class="media-photo"
+    src="kelas 8e.jpg"
+    alt="Dokumentasi praktik microteaching kelompok"
+    loading="lazy"
+  >
+  <p class="media-caption">Foto Bersama Kelas 8-E</p>
+</div>
+
+</div>    
+              
+              </div>
+            </article>
+
+          </div>
+
+          <p class="quote">
+            “Every classroom is an opportunity to
+            <span class="pink-text">learn and grow.</span>”
+          </p>
+        </section>
+      </section>
+
+      <!-- ================= TUTORING ================= -->
+      <section id="tutoring" class="view">
+
+        <div class="hero">
+          <p class="eyebrow">Welcome to Little Class</p>
+
+          <h1>
+            Belajar Jadi Lebih
+            <span class="pink-text">Menyenangkan!</span>
+          </h1>
+
+          <p class="hero-description">
+            Little Class adalah bimbingan belajar yang hadir untuk menemani
+            anak belajar dengan lebih nyaman, memahami materi secara bertahap,
+            dan membangun rasa percaya diri. Program belajar disesuaikan
+            dengan jenjang dan kebutuhan anak.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">♡ Pendampingan belajar</span>
+            <span class="tag">♡ Online & Offline</span>
+            <span class="tag">♡ PAUD sampai SMP</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Find your learning program</p>
+          <h2>Program Belajar</h2>
+
+          <p class="section-intro">
+            Pilih program sesuai jenjang pendidikan. Deskripsi ini masih
+            berupa contoh dan dapat kamu sesuaikan dengan layanan Little Class.
+          </p>
+
+          <div class="program-grid">
+            <article class="program-card">
+              <div class="program-icon">🌱</div>
+              <h3>PAUD</h3>
+              <p>Mengenal konsep dasar melalui aktivitas sederhana yang menyenangkan.</p>
+            </article>
+
+            <article class="program-card">
+              <div class="program-icon">🧩</div>
+              <h3>TK</h3>
+              <p>Persiapan membaca, menulis, berhitung, dan keterampilan dasar.</p>
+            </article>
+
+            <article class="program-card">
+              <div class="program-icon">🎒</div>
+              <h3>SD</h3>
+              <p>Pendampingan pelajaran sekolah, latihan soal, dan penguatan konsep.</p>
+            </article>
+
+            <article class="program-card">
+              <div class="program-icon">📚</div>
+              <h3>SMP</h3>
+              <p>Pendalaman materi dan latihan memahami konsep pelajaran.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="eyebrow">Flexible learning</p>
+          <h2>Pilihan Cara Belajar</h2>
+
+          <p class="section-intro">
+            Belajar dapat dilakukan secara online maupun offline,
+            sesuai layanan dan kesepakatan yang tersedia.
+          </p>
+
+          <div class="two-columns">
+            <article class="mode-card">
+              <div class="number-icon">⌘</div>
+              <div>
+                <h3>Online Class</h3>
+                <p>
+                  Belajar dari rumah melalui pertemuan daring.
+                  Cocok untuk siswa yang membutuhkan pilihan belajar fleksibel.
+                </p>
+              </div>
+            </article>
+
+            <article class="mode-card">
+              <div class="number-icon">⌖</div>
+              <div>
+                <h3>Offline Class</h3>
+                <p>
+                  Pendampingan secara langsung. Lokasi, jadwal, dan ketentuan
+                  belajar dapat diinformasikan saat pendaftaran.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- DOKUMENTASI TUTORING -->
+          <section class="tutoring-documentation">
+
+            <div class="section-heading">
+              <p class="eyebrow">Learning Moments</p>
+              <h2>Dokumentasi Kegiatan Mengajar</h2>
+              <p>
+                Beberapa dokumentasi kegiatan belajar dan pendampingan
+                siswa bersama Little Class.
+              </p>
+            </div>
+
+            <div class="documentation-grid">
+
+              <!-- FOTO KEGIATAN -->
+              <div class="documentation-card">
+
+                <div class="documentation-media">
+                  <img
+                    src="foto mengajar online.png"
+                    alt="Dokumentasi kegiatan mengajar bersama siswa"
+                    loading="lazy"
+                  >
+                </div>
+
+                <h3>Teaching Moments</h3>
+                <p>Dokumentasi kegiatan belajar bersama siswa.</p>
+
+              </div>
+
+              <!-- VIDEO KEGIATAN -->
+              <div class="documentation-card">
+
+                <div class="documentation-media">
+                  <video controls preload="metadata">
+                    <source
+                      src="mengajar online.mp4"
+                      type="video/mp4"
+                    >
+                    Browser kamu tidak mendukung pemutaran video.
+                  </video>
+                </div>
+
+                <h3>Learning in Action</h3>
+                <p>Cuplikan kegiatan pembelajaran dan pendampingan.</p>
+
+              </div>
+
+            </div>
+
+          </section>
+        </section>
+
+        <!-- BIAYA -->
+        <section class="section">
+          <p class="eyebrow">Choose your package</p>
+          <h2>Paket & Biaya Belajar</h2>
+
+          <p class="section-intro">
+            Tersedia pilihan pembelajaran online dan offline
+            dengan biaya yang disesuaikan berdasarkan jenjang pendidikan.
+          </p>
+
+          <div class="pricing-grid">
+
+            <!-- PAKET PAUD & TK -->
+            <article class="price-card">
+              <span class="price-label">Paket 01</span>
+              <h3>Little Learners</h3>
+              <span class="price-note">PAUD & TK</span>
+
+              <div class="price-options">
+                <div class="price-option">
+                  <span>Online Class</span>
+                  <strong>Rp 15.000/pertemuan</strong>
+                </div>
+
+                <div class="price-option">
+                  <span>Offline Class</span>
+                  <strong>Rp 20.000/pertemuan</strong>
+                </div>
+              </div>
+
+              <p class="price-private-note">
+                * Harga berlaku untuk kelas private (1 siswa).
+              </p>
+
+              <ul>
+                <li>Materi sesuai jenjang</li>
+                <li>Pemahaman calistung</li>
+                <li>Aktivitas belajar menyenangkan</li>
+              </ul>
+            </article>
+
+            <!-- PAKET SD -->
+            <article class="price-card">
+              <span class="price-label">Paket 02</span>
+              <h3>Elementary Class</h3>
+              <span class="price-note">Sekolah Dasar</span>
+
+              <div class="price-options">
+                <div class="price-option">
+                  <span>Online Class</span>
+                  <strong>Rp 20.000/pertemuan</strong>
+                </div>
+
+                <div class="price-option">
+                  <span>Offline Class</span>
+                  <strong>Rp 25.000/peremuan</strong>
+                </div>
+              </div>
+
+              <p class="price-private-note">
+                * Harga berlaku untuk kelas private (1 siswa).
+              </p>
+
+              <ul>
+                <li>Pendampingan pelajaran</li>
+                <li>Latihan dan penguatan konsep</li>
+                <li>Bantuan mengerjakan tugas</li>
+              </ul>
+            </article>
+
+            <!-- PAKET SMP -->
+            <article class="price-card">
+              <span class="price-label">Paket 03</span>
+              <h3>Junior Class</h3>
+              <span class="price-note">Sekolah Menengah Pertama</span>
+
+              <div class="price-options">
+                <div class="price-option">
+                  <span>Online Class</span>
+                  <strong>Rp 25.000/pertemuan</strong>
+                </div>
+
+                <div class="price-option">
+                  <span>Offline Class</span>
+                  <strong>Rp 30.000/pertemuan</strong>
+                </div>
+              </div>
+
+              <p class="price-private-note">
+                * Harga berlaku untuk kelas private (1 siswa).
+              </p>
+
+              <ul>
+                <li>Pendalaman materi</li>
+                <li>Latihan soal dan pembahasan</li>
+                <li>Penguatan pemahaman konsep</li>
+              </ul>
+            </article>
+
+          <a
+            class="cta"
+            href="https://wa.me/6285385945104"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ☏ Hubungi via WhatsApp ↗
+          </a>
+
+        </section>
+      </section>
+
+      <!-- ================= SPACEMATH ================= -->
+      <section id="spacemath" class="view">
+
+        <div class="hero">
+          <p class="eyebrow">Educational Media · 01</p>
+
+          <h1>
+            Explore Math with
+            <span class="pink-text">SpaceMath.</span>
+          </h1>
+
+          <p class="hero-description">
+            SpaceMath merupakan media pembelajaran matematika dengan
+            konsep luar angkasa. Media ini dirancang untuk menghadirkan
+            pengalaman belajar yang menarik melalui perpaduan matematika
+            dan petualangan menjelajahi ruang angkasa.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">✦ Mathematics</span>
+            <span class="tag">✦ Space Exploration</span>
+            <span class="tag">✦ Interactive Learning</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Discover the media</p>
+          <h2>About SpaceMath</h2>
+
+          <div class="media-detail-card">
+            <p class="media-description">
+              SpaceMath dikembangkan sebagai salah satu bentuk pemanfaatan
+              media digital dalam pembelajaran matematika. Melalui tema
+              luar angkasa, siswa diajak mengeksplorasi materi matematika
+              dalam suasana belajar yang lebih menyenangkan.
+            </p>
+            
+            <div class="spacemath-gallery">
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="cover spacemath.png"
+                      alt="Logo SpaceMath"
+                      loading="lazy">
+                </div>
+                <h3>Logo Space Math</h3>
+                <p>Tampilan logo media pembelajaran SpaceMath.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="login bangun ruang.png"
+                      alt="Tampilan Awal SpaceMath"
+                      loading="lazy">
+                </div>
+                <h3>Tampilan Awal SpaceMath</h3>
+                <p>Tampilan awal media pembelajaran SpaceMath.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="aktivitas kubus.png"
+                      alt="Aktivitas Pembelajaran"
+                      loading="lazy">
+                </div>
+                <h3>Aktivitas Pembelajaran</h3>
+                <p>Cuplikan aktivitas pembelajaran dalam SpaceMath.</p>
+              </article>
+
+            </div>
+
+            <div class="media-features">
+              <div class="feature-item">
+                <strong>01 · Learning Concept</strong>
+                <p>Pembelajaran matematika dengan topik Bangun Ruang Sisi Datar.</p>
+              </div>
+
+              <div class="feature-item">
+                <strong>02 · Learning Experience</strong>
+                <p>Pengalaman belajar yang dirancang agar lebih menarik.</p>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="cta" 
+                href=" https://diazhanum.github.io/SpaceMathBRSD/" 
+                target="_blank" 
+                rel="noopener noreferrer">
+                Explore SpaceMath ↗
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= SI MALA ================= -->
+      <section id="simala" class="view">
+
+        <div class="hero">
+          <p class="eyebrow">Educational Media · 02</p>
+
+          <h1>
+            Petualangan Matematika
+            <span class="pink-text">Si Mala.</span>
+          </h1>
+
+          <p class="hero-description">
+            Si Mala merupakan media pembelajaran interaktif yang mengajak
+            siswa mempelajari aritmetika sosial melalui petualangan seru
+            di kawasan Malang Raya. Berbagai konteks kehidupan sehari-hari,
+            terutama kegiatan perdagangan, digunakan untuk menghubungkan
+            matematika dengan pengalaman nyata.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">✦ Aritmetika Sosial</span>
+            <span class="tag">✦ Malang Raya</span>
+            <span class="tag">✦ Learning Adventure</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Discover the media</p>
+          <h2>About Si Mala</h2>
+
+          <div class="media-detail-card">
+            <p class="media-description">
+              Melalui Si Mala, siswa diajak menjelajahi berbagai tempat
+              menarik di Malang Raya sambil menyelesaikan tantangan
+              matematika. Konteks jual beli dan aktivitas ekonomi sehari-hari
+              menjadi bagian dari perjalanan untuk memahami aritmetika sosial.
+            </p>
+            
+            <div class="spacemath-gallery">
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="Selamat Datang SiMala.png"
+                      alt="Tampilan awal media Si Mala"
+                      loading="lazy">
+                </div>
+                <h3>Tampilan Awal</h3>
+                <p>Tampilan awal media pembelajaran Si Mala.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="peta petualang simala.png"
+                      alt="Peta petualangan Si Mala"
+                      loading="lazy">
+                </div>
+                <h3>Peta Petualangan</h3>
+                <p>Jelajahi lokasi dan tantangan matematika di Malang Raya.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="Find Hotspot.png"
+                      alt="Aktivitas pembelajaran Si Mala"
+                      loading="lazy">
+                </div>
+                <h3>Aktivitas Pembelajaran</h3>
+                <p>Contoh aktivitas belajar aritmetika sosial.</p>
+              </article>
+            </div>
+
+            <div class="media-features">
+              <div class="feature-item">
+                <strong>01 · Social Arithmetic</strong>
+                <p>Mempelajari aritmetika sosial melalui konteks kehidupan sehari-hari.</p>
+              </div>
+
+              <div class="feature-item">
+                <strong>02 · Explore Malang Raya</strong>
+                <p>Menjelajahi konteks tempat dan aktivitas yang dekat dengan siswa.</p>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="cta" 
+                href="https://app.lumi.education/run/Ubv25f" 
+                target="_blank" 
+                rel="noopener noreferrer">
+                Explore Si Mala ↗
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= EQUAMART ================= -->
+      <section id="equamart" class="view">
+
+        <div class="hero">
+          <p class="eyebrow">Educational Media · 03</p>
+
+          <h1>
+            Learning Mathematics at
+            <span class="pink-text">EquaMart.</span>
+          </h1>
+
+          <p class="hero-description">
+            EquaMart merupakan media pembelajaran matematika yang menggunakan
+            konteks berbelanja sebagai penghubung antara konsep matematika
+            dan kehidupan sehari-hari. Suasana toko menjadi inspirasi untuk
+            menghadirkan pengalaman belajar yang dekat dengan aktivitas siswa.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">✦ Mathematics</span>
+            <span class="tag">✦ Shopping Context</span>
+            <span class="tag">✦ Problem Solving</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Discover the media</p>
+          <h2>About EquaMart</h2>
+
+          <div class="media-detail-card">
+            <p class="media-description">
+              EquaMart menghadirkan konteks toko dan kegiatan berbelanja
+              sebagai latar pembelajaran. Siswa dapat mempelajari matematika
+              melalui situasi yang familier, seperti memilih barang,
+              memperhatikan harga, dan menyelesaikan permasalahan berdasarkan
+              informasi yang tersedia di dalam media.
+            </p>
+            
+            <div class="spacemath-gallery">
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="logo equamart.png"
+                      alt="Logo Equamart"
+                      loading="lazy">
+                </div>
+                <h3>Logo EquaMart</h3>
+                <p>Tampilan logo media pembelajaran EquaMart.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="login equamart.png"
+                      alt="Tampilan awal EquaMart"
+                      loading="lazy">
+                </div>
+                <h3>Tampilan Awal EquaMart</h3>
+                <p>Tampilan awal media pembelajaran SpaceMath.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="suasana toko.png"
+                      alt="Aktivitas matematika dalam EquaMart"
+                      loading="lazy">
+                </div>
+                <h3>Shopping Experience</h3>
+                <p>Suasana toko sebagai konteks pembelajaran matematika.</p>
+              </article>
+            </div>
+
+            <div class="media-features">
+              <div class="feature-item">
+                <strong>01 · Real-Life Context</strong>
+                <p>Menghubungkan matematika dengan situasi berbelanja.</p>
+              </div>
+
+              <div class="feature-item">
+                <strong>02 · Mathematical Thinking</strong>
+                <p>Mendukung siswa dalam memahami dan menyelesaikan permasalahan.</p>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="cta" 
+                href="https://media-ict-equamart-smp.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer">
+                Explore EquaMart ↗
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= ALJABARA ================= -->
+      <section id="aljabara" class="view">
+
+        <div class="hero">
+          <p class="eyebrow">Educational Media · 04</p>
+
+          <h1>
+            ALJABARA:
+            <span class="pink-text">Misi Aljabar, Jelajah Sidoarjo.</span>
+          </h1>
+
+          <p class="hero-description">
+            ALJABARA merupakan media pembelajaran interaktif untuk siswa SMP
+            yang mengajak siswa menjelajahi konsep bentuk aljabar melalui
+            petualangan dengan konteks lokal Sidoarjo. Setiap pos menghadirkan
+            materi dan tantangan untuk membantu siswa memahami konsep aljabar
+            secara bertahap.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">✦ Bentuk Aljabar</span>
+            <span class="tag">✦ Jelajah Sidoarjo</span>
+            <span class="tag">✦ Interactive Learning</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Discover the media</p>
+          <h2>About ALJABARA</h2>
+
+          <div class="media-detail-card">
+            <p class="media-description">
+              Melalui petualangan di berbagai lokasi yang terinspirasi dari
+              Sidoarjo, siswa mempelajari sejarah dan konsep dasar aljabar,
+              unsur-unsur bentuk aljabar, sifat dan operasi aljabar,
+              serta pemodelan matematika. Media ini juga dirancang dengan
+              latihan soal dan kuis untuk mendukung proses belajar siswa.
+            </p>
+            
+            <div class="spacemath-gallery">
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="Selamat Datang di Aljabara.png"
+                      alt="Tampilan awal media ALJABARA"
+                      loading="lazy">
+                </div>
+                <h3>Tampilan Awal</h3>
+                <p>Tampilan awal petualangan ALJABARA.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="Peta Petualang aljabara.png"
+                      alt="Peta petualangan ALJABARA di Sidoarjo"
+                      loading="lazy">
+                </div>
+                <h3>Jelajah Sidoarjo</h3>
+                <p>Peta petualangan dengan maskot Sido dan Rara.</p>
+              </article>
+
+              <article class="spacemath-media">
+                <div class="spacemath-image">
+                  <img src="aljabara-3.png"
+                      alt="Aktivitas pembelajaran bentuk aljabar"
+                      loading="lazy">
+                </div>
+                <h3>Misi Aljabar</h3>
+                <p>Contoh pos materi, latihan soal, atau kuis.</p>
+              </article>
+            </div>
+
+            <div class="media-features">
+              <div class="feature-item">
+                <strong>01 · Mengenal Dunia Aljabar</strong>
+                <p>Mengenal sejarah, konsep dasar, dan penerapan aljabar.</p>
+              </div>
+
+              <div class="feature-item">
+                <strong>02 · Detektif Aljabar</strong>
+                <p>Mengidentifikasi variabel, koefisien, konstanta, dan suku.</p>
+              </div>
+
+              <div class="feature-item">
+                <strong>03 · Pabrik Rumus</strong>
+                <p>Mempelajari sifat dan operasi bentuk aljabar.</p>
+              </div>
+
+              <div class="feature-item">
+                <strong>04 · Tantangan Pesanan</strong>
+                <p>Menyusun model matematika dari permasalahan sehari-hari.</p>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="cta" href="#" target="_blank" rel="noopener noreferrer">
+                Explore ALJABARA ↗
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= LKPD ================= -->
+      <section id="lkpd" class="view">
+        <div class="hero">
+          <p class="eyebrow">Creative Design · 01</p>
+          <h1>Learning Through
+            <span class="pink-text">Worksheets.</span>
+          </h1>
+          <p class="hero-description">
+            LKPD (Lembar Kerja Peserta Didik) merupakan salah satu karya
+            pembelajaran yang saya rancang untuk membantu siswa memahami
+            materi melalui aktivitas, petunjuk pengerjaan, dan latihan soal.
+            Setiap LKPD disusun dengan memperhatikan tampilan visual dan
+            kebutuhan kegiatan belajar.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">✦ Student Worksheets</span>
+            <span class="tag">✦ Learning Activities</span>
+            <span class="tag">✦ Educational Design</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">My creative works</p>
+          <h2>LKPD Collection</h2>
+          <p class="section-intro">
+            Berikut adalah beberapa contoh LKPD yang telah saya buat.
+            Galeri ini dapat menampilkan sampul, halaman aktivitas,
+            atau cuplikan isi LKPD.
+          </p>
+
+          <div class="creative-gallery">
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="lkpd bilangan cacah.png"
+                    alt="Tampilan LKPD Pertama"
+                    loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Worksheet 01</h3>
+                <p>LKPD Membaca dan Menulis Bilangan Cacah Kelas 3 SD.</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="bilangan cacah.png"
+                    alt="Tampilan Media"
+                    loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Worksheet 02</h3>
+                <p>Media Kartu Tag Bilangan Cacah Kelas 3 SD.</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="kelompok hewan.png"
+                    alt="Tampilan LKPD Kedua"
+                    loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Worksheet 03</h3>
+                <p>LKPD Pengelompokan Hewan Vertebrata dan Invertebrata Kelas 3 SD.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="creative-store-note">
+            Ingin melihat produk LKPD yang tersedia? Kunjungi toko saya
+            untuk melihat informasi dan pilihan produk.
+          </div>
+
+          <div class="button-row">
+            <a class="cta" href="https://lynk.id/bukuku.ku"
+               target="_blank" rel="noopener noreferrer">
+              Visit My Store ↗
+            </a>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= MATHOPIA BOOK ================= -->
+      <section id="mathopia" class="view">
+        <div class="hero">
+          <p class="eyebrow">Creative Design · 02</p>
+          <h1>Stories Behind
+            <span class="pink-text">Mathematics.</span>
+          </h1>
+          <p class="hero-description">
+            Mathopia Book merupakan proyek kelompok dalam merancang dan
+            membuat buku cerita matematika untuk siswa SD, SMP, dan SMA.
+            Melalui cerita dan ilustrasi, proyek ini berupaya menyajikan
+            konsep matematika dalam bentuk buku yang lebih menarik dan
+            dekat dengan dunia siswa.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">✦ Math Storybooks</span>
+            <span class="tag">✦ Group Project</span>
+            <span class="tag">✦ SD · SMP · SMA</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">Our creative works</p>
+          <h2>Mathopia Book Collection</h2>
+          <p class="section-intro">
+            Galeri ini menampilkan buku cerita matematika yang dikembangkan
+            bersama kelompok. Kamu dapat menambahkan foto sampul dan beberapa
+            halaman isi dari buku untuk memperlihatkan hasil proyek.
+          </p>
+
+          <div class="creative-gallery">
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="SD.png"
+                     alt="Buku cerita matematika untuk SD"
+                     loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Elementary School</h3>
+                <p>Buku cerita matematika untuk jenjang sekolah dasar.</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="SMP.png"
+                     alt="Buku cerita matematika untuk SMP"
+                     loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Junior High School Book</h3>
+                <p>Buku cerita matematika untuk jenjang sekolah menengah pertama.</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="SMA.png"
+                     alt="Buku cerita matematika untuk SMA"
+                     loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Senior High School</h3>
+                <p>Buku cerita matematika untuk jenjang sekolah menengah atas.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="creative-store-note">
+            Ingin melihat koleksi buku cerita matematika kami? 
+            Jelajahi berbagai buku Mathopia untuk jenjang SD, SMP, dan SMA 
+            melalui tautan berikut.
+          </div>
+
+          <div class="button-row">
+            <a class="cta" 
+               href="https://drive.google.com/drive/folders/1CTLCtB1dJjMq0Q6kBxDZPczSTpjuN2VN" 
+               target="_blank"
+               rel="noopener noreferrer">
+              View Our Books ↗
+            </a>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= DIGITAL STORYBOOKS ================= -->
+      <section id="digital-storybooks" class="view">
+        <div class="hero">
+          <p class="eyebrow">Creative Design · 03</p>
+          <h1>Little Stories,
+            <span class="pink-text">Big Imagination.</span>
+          </h1>
+          <p class="hero-description">
+            Digital Storybooks merupakan kumpulan buku cerita digital
+            untuk anak dengan tema cerita umum yang menyenangkan dan
+            imajinatif. Karya ini dibuat untuk menghadirkan pengalaman
+            membaca melalui perpaduan cerita dan ilustrasi visual yang
+            menarik bagi anak-anak.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">✦ Children's Stories</span>
+            <span class="tag">✦ Digital Books</span>
+            <span class="tag">✦ Creative Illustration</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">My creative works</p>
+          <h2>Digital Storybook Collection</h2>
+          <p class="section-intro">
+            Berikut adalah tempat untuk menampilkan sampul dan cuplikan
+            buku cerita digital yang telah saya buat. Setiap buku dapat
+            memiliki tema dan karakter cerita yang berbeda.
+          </p>
+
+          <div class="creative-gallery">
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="buku cerita 1.png"
+                     alt="buku cerita digital 01"
+                     loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Storybook 01</h3>
+                <p>Buku cerita digital "Si Ikan Kecil yang Ingin terbang"</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="buku cerita 2.png"
+                     alt="buku cerita digital 02"
+                     loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Storybook 02</h3>
+                <p>Buku cerita digital "Lala Si Anak Kucing & Bangku Taman"</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="buku cerita 3.png"
+                     alt="buku cerita digital 03"
+                     loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Storybook 03</h3>
+                <p>Buku Cerita Digital "Lilo, Rusa Kecil yang Berani"</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="creative-store-note">
+            Buku cerita digital yang tersedia dapat dilihat melalui toko
+            saya. Silakan kunjungi toko untuk memperoleh informasi produk.
+          </div>
+
+          <div class="button-row">
+            <a class="cta" href="https://lynk.id/bukuku.ku"
+               target="_blank" rel="noopener noreferrer">
+              Visit My Store ↗
+            </a>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= CLASSROOM DECORATIONS ================= -->
+      <section id="classroom-decorations" class="view">
+        <div class="hero">
+          <p class="eyebrow">Creative Design · 04</p>
+          <h1>Creating a More
+            <span class="pink-text">Colorful Classroom.</span>
+          </h1>
+          <p class="hero-description">
+            Classroom Decorations merupakan kumpulan karya hiasan kelas
+            yang saya buat untuk mendukung suasana ruang belajar yang lebih
+            menarik, berwarna, dan nyaman. Karya dapat berupa dekorasi dinding,
+            media visual, huruf, angka, atau elemen dekoratif lainnya.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">✦ Classroom Decor</span>
+            <span class="tag">✦ Handmade Creations</span>
+            <span class="tag">✦ Learning Environment</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <p class="eyebrow">My creative works</p>
+          <h2>Classroom Decoration Collection</h2>
+          <p class="section-intro">
+            Galeri ini berisi foto hiasan kelas yang telah saya buat.
+            Tambahkan foto hasil karya agar pengunjung dapat melihat
+            variasi desain dan detail dekorasinya.
+          </p>
+
+          <div class="creative-gallery">
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="kartu biografi.png"
+                    alt="Hiasan kelas pertama"
+                    loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Classroom Decor 01</h3>
+                <p>Kartu Hiasan Kelas Pahlawan Kemerdekaan.</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="kartu baju adat.png"
+                    alt="Hiasan kelas kedua"
+                    loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Classroom Decor 02</h3>
+                <p>Kartu Hiasan Kelas Baju Adat yang ada di Indonesia.</p>
+              </div>
+            </article>
+
+            <article class="creative-item">
+              <div class="creative-image">
+                <img src="kartu asmaul husna.png"
+                    alt="Hiasan kelas ketiga"
+                    loading="lazy">
+              </div>
+              <div class="creative-item-info">
+                <h3>Classroom Decor 03</h3>
+                <p>Kartu Hiasan Kelas 99 Asmaul Husna.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="creative-store-note">
+            Kunjungi toko saya untuk melihat produk hiasan kelas yang tersedia.
+          </div>
+
+          <div class="button-row">
+            <a class="cta" href="https://lynk.id/bukuku.ku"
+               target="_blank" rel="noopener noreferrer">
+              Visit My Store ↗
+            </a>
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <footer>
+      © 2026 Diaz Hanum Mubarok · Personal Website
+    </footer>
+  </div>
+
+  <script>
+   
+const params = new URLSearchParams(window.location.search);
+
+const selectedProject = (
+  params.get("project") || "teaching"
+).toLowerCase();
+
+const projectTitles = {
+  teaching: "My Teaching Journey | Diaz Hanum Mubarok",
+  tutoring: "Welcome to Little Class | Diaz Hanum Mubarok",
+  spacemath: "SpaceMath | Diaz Hanum Mubarok",
+  simala: "Si Mala | Diaz Hanum Mubarok",
+  equamart: "EquaMart | Diaz Hanum Mubarok",
+  aljabara: "ALJABARA | Diaz Hanum Mubarok",
+  lkpd: "LKPD Collection | Diaz Hanum Mubarok",
+  mathopia: "Mathopia Book | Diaz Hanum Mubarok",
+  "digital-storybooks": "Digital Storybooks | Diaz Hanum Mubarok",
+  "classroom-decorations": "Classroom Decorations | Diaz Hanum Mubarok"
+};
+
+const selectedView = document.getElementById(selectedProject);
+const fallbackView = document.getElementById("teaching");
+
+document.querySelectorAll(".view").forEach((view) => {
+  view.classList.toggle("active", view === (selectedView || fallbackView));
+});
+
+document.title = projectTitles[selectedView ? selectedProject : "teaching"];
+  </script>
+</body>
+</html>

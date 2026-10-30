@@ -1,0 +1,3051 @@
+
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diaz Hanum Mubarok | Personal Website</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================
+   PERSONAL WEBSITE - DIAZ HANUM MUBAROK
+   HTML + CSS + JAVASCRIPT DALAM SATU FILE
+   ========================================= */
+
+/* PALET WARNA */
+:root {
+  --bg: #faecf3;
+  --surface: #ffffff;
+  --surface2: #f7dce8;
+  --text: #45474b;
+  --heading: #543884;
+  --hero-purple: #543884;
+  --pink: #d25380;
+  --purple: #5e17eb;
+  --yellow: #f5a718;
+  --border: rgba(84,56,132,.17);
+  --muted: #77717c;
+  --shadow: 0 10px 35px rgba(84,56,132,.12);
+}
+
+[data-theme="dark"] {
+  --bg: #26222c;
+  --surface: #312b38;
+  --surface2: #3d3345;
+  --text: #f5edf3;
+  --heading: #ffffff;
+  --pink: #d25380;
+  --purple: #a98aff;
+  --yellow: #f5a718;
+  --border: rgba(255,255,255,.15);
+  --muted: #c5b9c8;
+  --shadow: 0 10px 35px rgba(0,0,0,.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: "Poppins", "Helvetica World", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background .3s, color .3s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+.container {
+  width: min(100% - 80px, 1400px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  padding: 90px 0;
+  scroll-margin-top: 75px;
+}
+
+h1, h2, h3 {
+  font-family: "Gilda Display", Georgia, serif;
+  font-weight: 400;
+  color: var(--heading);
+  line-height: 1.2;
+}
+
+.section-heading {
+  margin-bottom: 40px;
+}
+
+.section-heading.center {
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--pink);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(34px, 5vw, 52px);
+  margin-bottom: 15px;
+}
+
+.script {
+  color: var(--pink);
+  font-style: italic;
+}
+
+.section-description {
+  color: var(--muted);
+  max-width: 680px;
+  font-size: 14px;
+}
+
+.center .section-description {
+  margin: auto;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--pink);
+  cursor: pointer;
+  transition: .25s;
+}
+
+.button-primary {
+  background: var(--pink);
+  color: #fff;
+}
+
+.button-primary:hover {
+  background: var(--heading);
+  border-color: var(--heading);
+  transform: translateY(-3px);
+}
+
+.button-outline {
+  color: var(--heading);
+  border-color: var(--heading);
+}
+
+.button-outline:hover {
+  background: var(--heading);
+  color: white;
+}
+
+/* NAVIGATION */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  width: min(100% - 80px, 1400px);
+  min-height: 75px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+/* NAMA DI POJOK KIRI */
+.logo {
+  flex-shrink: 0;
+  margin-right: auto;
+  font-family: "Helvetica World", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--pink);
+  white-space: nowrap;
+}
+
+/* MENU DI SEBELAH KANAN */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  font-family: "Helvetica World", Helvetica, Arial, sans-serif;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+/* Menu aktif atau saat diarahkan */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+/* TOMBOL MENU HP */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--heading);
+  cursor: pointer;
+}
+
+.menu-toggle svg {
+  width: 27px;
+  height: 27px;
+  display: block;
+}
+
+/* MENU NAVIGASI DI HP */
+@media (max-width: 760px) {
+  .navbar {
+    position: relative;
+    width: min(100% - 36px, 1400px);
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 14px;
+  }
+}
+
+/* Tombol mode terang/gelap */
+.theme-toggle {
+    font-family: "Helvetica World", Helvetica, Arial, sans-serif;
+    color: #543884;
+    background: #ffffff
+}
+
+/* TOMBOL MODE DI UJUNG KANAN */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50%;
+
+    background: #ffffff;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    box-shadow: 0 2px 8px rgba(84, 56, 132, 0.10);
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+.theme-toggle svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+  flex: 0 0 25px;
+}
+
+/* HOME */
+
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-start;
+  background: #faecf3;
+  overflow: hidden;
+  padding: 35px 0 45px;
+  box-sizing: border-box;
+}
+
+.hero-container {
+  width: min(100% - 56px, 1400px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 45px;
+}
+
+/* AREA FOTO HERO */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 490px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* BENTUK UNGU */
+.hero-blob {
+  position: absolute;
+  z-index: 0;
+  width: 82%;
+  height: 88%;
+  left: 9%;
+  bottom: 0;
+  background: #543884;
+  border-radius: 50% 50% 0 0;
+}
+
+/* FOTO PROFIL */
+.hero-photo {
+  position: absolute;
+  z-index: 1;
+
+  /* Foto lebih lebar dan berada di tengah */
+  width: 64%;
+  height: 78%;
+  left: 18%;
+  bottom: 0;
+
+  /* Potong foto agar fokus dari kepala sampai paha */
+  object-fit: cover;
+  object-position: center 25%;
+
+  display: block;
+  border-radius: 0;
+
+  /* Lengkungan foto mengikuti bentuk ungu */
+  border-radius: 50% 50% 0 0;
+
+  /* Potong bagian foto yang keluar dari lengkungan */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* HIASAN BINTANG */
+.sparkle {
+  position: absolute;
+  z-index: 2;
+  color: #f5a718;
+  font-size: 42px;
+  line-height: 1;
+  pointer-events: none;
+  animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+.sparkle-one {
+  left: 0;
+  bottom: 18%;
+}
+
+.sparkle-two {
+  right: 0;
+  top: 35%;
+  animation-delay: 0.6s;
+}
+
+.sparkle-three {
+  right: 24%;
+  top: 8%;
+  animation-delay: 1.2s;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(8deg);
+  }
+}
+
+/* LABEL KREATIF */
+
+.hero-tag {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 116px;
+  padding: 8px 15px;
+  border-radius: 30px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+
+  cursor: default;
+  user-select: none;
+
+  box-shadow: 0 4px 10px rgba(38, 34, 44, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* Efek timbul dan bercahaya ketika diarahkan */
+
+.hero-tag:hover {
+  transform: translateY(-9px) scale(1.08);
+  filter: brightness(1.08);
+
+  box-shadow:
+    0 0 12px rgba(245, 167, 24, 0.65),
+    0 0 24px rgba(210, 83, 128, 0.35),
+    0 10px 20px rgba(84, 56, 132, 0.22);
+}
+
+/* TAG CREATIVE LEARNING */
+.tag-creative {
+  top: 48%;
+  right: 5%;
+  background: #f5a718;
+  color: #543884;
+}
+
+/* TAG TEACHING */
+.tag-teaching {
+  right: 7%;
+  bottom: 13%;
+  background: #d25380;
+  color: #ffffff;
+}
+
+/* TAG EDUCATION */
+.tag-education {
+  left: 23%;
+  bottom: 2%;
+  background: #f5a718;
+  color: #543884;
+}
+
+/* BAGIAN KANAN */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* BINTANG KUNING DI DEKAT JUDUL */
+.hero-star {
+  position: absolute;
+  top: -25px;
+  right: 3%;
+  color: #f5a718;
+  font-size: 44px;
+  line-height: 1;
+  pointer-events: none;
+  animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+.hero-greeting {
+  margin: 0 0 4px;
+  font-family: "Gilda Display", Georgia, serif;
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #45474b;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-family: "Helvetica World", Helvetica, Arial, sans-serif;
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: #d25380;
+}
+
+/* TOMBOL KENAL LEBIH DEKAT */
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 52px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.button-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 19px;
+  border-radius: 30px;
+  background: #d25380;
+  color: #ffffff;
+
+  font-family: "Helvetica World", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.button-arrow {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #543884;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+}
+
+/* ABOUT */
+
+.about-section {
+  background: var(--surface);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 45px;
+}
+
+/* KOTAK PERKENALAN DI SEBELAH KIRI */
+.about-intro-card {
+  background: var(--bg);
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-width: 0;
+}
+
+.about-intro-card h3 {
+  font-size: 27px;
+  margin: 14px 0;
+}
+
+.about-intro-card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+/* KOTAK MY EDUCATION, MY EXPERIENCES, MY HOBBIES */
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.about-card {
+  width: 100%;
+  min-height: 68px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+
+  background: #d25380;
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 15px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow: 0 5px 12px rgba(84, 56, 132, 0.10);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-7px);
+  background: #df5d8b;
+  box-shadow:
+    0 0 12px rgba(210, 83, 128, 0.35),
+    0 0 24px rgba(245, 167, 24, 0.20),
+    0 12px 25px rgba(84, 56, 132, 0.18);
+}
+
+.about-card:focus-visible {
+  outline: 3px solid #f5a718;
+  outline-offset: 4px;
+}
+
+.about-card-icon {
+  width: 30px;
+  min-width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+  line-height: 1;
+}
+
+/* RESPONSIF HP */
+@media (max-width: 680px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-cards {
+    max-width: 100%;
+    margin-top: 25px;
+    gap: 15px;
+  }
+
+  .about-card {
+    min-height: 62px;
+    padding: 13px 18px;
+  }
+}
+
+/* EDUCATION */
+
+.education-section {
+  background: var(--bg);
+}
+
+/* ALUR PENDIDIKAN */
+.education-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.education-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 170px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.education-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.education-one { padding-top: 24px; }
+.education-two { padding-top: 20px; }
+.education-three { padding-top: 18px; }
+.education-four { padding-top: 45px; }
+
+/* LINGKARAN SEKOLAH */
+.education-school {
+  width: 82px;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.purple-school {
+  background: #543884;
+}
+
+.yellow-school {
+  background: #f5a718;
+}
+
+.school-icon {
+  font-size: 36px;
+  line-height: 1;
+}
+
+/* KARTU INFORMASI PENDIDIKAN */
+.education-card {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 190px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  padding: 18px 12px 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(84, 56, 132, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.education-level {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: #d25380;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.college-level {
+  background: #543884;
+}
+
+.education-card h3 {
+  margin: 2px 0 9px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.education-year {
+  margin: 0 0 9px;
+  color: var(--pink);
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.education-description {
+  margin: 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: "Poppins", sans-serif;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+/* RESPONSIF HP */
+@media (max-width: 600px) {
+  .education-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 14px;
+  }
+
+  .education-path {
+    display: none;
+  }
+
+  .education-one,
+  .education-two,
+  .education-three,
+  .education-four {
+    padding-top: 0;
+  }
+
+  .education-school {
+    width: 72px;
+    height: 72px;
+  }
+
+  .education-card {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 360px) {
+  .education-timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* EXPERIENCES */
+
+.experience-section {
+  background: var(--surface);
+}
+
+/* EXPERIENCE CARDS */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.experience-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 28px 23px;
+  overflow: hidden;
+
+  background: var(--surface, #ffffff);
+  color: var(--text, #26222c);
+  border: 1px solid var(--border, #eadde8);
+  border-radius: 18px;
+  text-decoration: none;
+
+  box-shadow: 0 5px 15px rgba(84, 56, 132, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* AKSEN CAHAYA DI BELAKANG IKON */
+.experience-card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -55px;
+  right: -45px;
+  border-radius: 50%;
+  background: rgba(210, 83, 128, 0.10);
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+/* IKON SVG */
+.experience-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 17px;
+  border-radius: 16px;
+
+  color: #d25380;
+  background: rgba(210, 83, 128, 0.12);
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease,
+    filter 0.3s ease;
+}
+
+.experience-icon svg {
+  width: 31px;
+  height: 31px;
+}
+
+/* JUDUL DAN DESKRIPSI */
+.experience-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  color: #d25380;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.experience-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 20px;
+  color: var(--muted, #655b6c);
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.experience-link {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  color: #543884;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* EFEK HOVER TIMBUL DAN BERCAHAYA */
+.experience-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(210, 83, 128, 0.55);
+
+  box-shadow:
+    0 0 12px rgba(210, 83, 128, 0.18),
+    0 0 25px rgba(245, 167, 24, 0.12),
+    0 15px 30px rgba(84, 56, 132, 0.14);
+}
+
+.experience-card:hover::before {
+  transform: scale(1.45);
+}
+
+.experience-card:hover .experience-icon {
+  color: #ffffff;
+  background: #d25380;
+  transform: translateY(-3px) scale(1.06);
+  filter: drop-shadow(0 0 8px rgba(210, 83, 128, 0.35));
+}
+
+.experience-card:focus-visible {
+  outline: 3px solid #f5a718;
+  outline-offset: 4px;
+}
+
+/* TAMPILAN HP DAN TABLET */
+@media (max-width: 800px) {
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card {
+    padding: 24px 20px;
+  }
+}
+
+/* KURANGI ANIMASI JIKA DIMINTA OLEH PERANGKAT */
+@media (prefers-reduced-motion: reduce) {
+  .experience-card,
+  .experience-card::before,
+  .experience-icon {
+    transition: none;
+  }
+
+  .experience-card:hover {
+    transform: none;
+  }
+}
+
+/* HOBBIES */
+
+.hobbies-section {
+  background: var(--surface2);
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hobbies-intro h2 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hobbies-intro h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.hobbies-intro p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hobby-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.hobby-item {
+  margin-bottom: 23px;
+}
+
+.hobby-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  font-size: 12px;
+}
+
+.hobby-label strong {
+  color: var(--pink);
+}
+
+
+/* ANIMASI GARIS HOBBIES */
+.progress {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f7d8e5;
+}
+
+.progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    90deg,
+    #d25380,
+    #a832b7,
+    #5e17eb
+  );
+
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -45%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.hobby-panel.is-visible .progress span::after {
+  animation: hobbyShimmer 1.2s ease-in-out 0.3s;
+}
+
+@keyframes hobbyShimmer {
+  from { left: -45%; }
+  to { left: 120%; }
+}
+
+/* SKILLS */
+
+.skills-section {
+  background: var(--bg);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: .25s;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--pink);
+}
+
+.skill-number {
+  color: var(--pink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.skill-card h3 {
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.skill-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 17px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 17px;
+}
+
+.skill-tags span {
+  background: var(--surface2);
+  color: var(--heading);
+  padding: 5px 9px;
+  font-size: 10px;
+  border-radius: 4px;
+}
+
+.skill-description {
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+/* PORTFOLIO */
+
+.portfolio-section {
+  background: var(--surface);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 30px;
+}
+
+.filter-button {
+  padding: 9px 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background: var(--pink);
+  color: #ffffff;
+  border-color: var(--pink)
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.portfolio-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.portfolio-card.hide {
+  display: none;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+}
+
+.portfolio-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.portfolio-info h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.portfolio-info p {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.project-button {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border: 1px solid var(--pink);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--pink);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  font-size: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.project-button:hover {
+  background: var(--pink);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(210, 83, 128, .25);
+}
+
+/* CONTACT SECTION */
+
+.contact-section {
+  background: radial-gradient(
+    circle at 85% 20%,
+    var(--surface2),
+    transparent 35%
+  ), var(--bg);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 65px;
+  align-items: center;
+}
+
+.contact-intro {
+  min-width: 0;
+}
+
+.contact-title {
+  margin: 22px 0 28px;
+  color: var(--heading, #543884);
+  font-family: "Gilda Display", Georgia, serif;
+  font-size: clamp(48px, 5.3vw, 82px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.contact-title span {
+  display: block;
+  color: var(--pink, #d25380);
+  font-style: italic;
+}
+
+.contact-copy {
+  max-width: 500px;
+  margin-bottom: 28px;
+  color: var(--muted, #6e6573);
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* LOGO SOSIAL MEDIA */
+.contact-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.contact-social {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--surface, #fff);
+  color: var(--pink, #d25380);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: transform .25s ease,
+              box-shadow .25s ease,
+              background-color .25s ease,
+              color .25s ease;
+}
+
+.contact-social svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+  fill: currentColor;
+}
+
+.contact-social:hover {
+  transform: translateY(-4px);
+  background: var(--heading, #543884);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(84, 56, 132, .2);
+}
+
+/* KARTU FORMULIR */
+.contact-form-card {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 12px 40px rgba(84, 56, 132, .06);
+}
+
+.contact-form-card h3 {
+  margin: 0 0 12px;
+  color: var(--heading, #543884);
+  font-family: "Gilda Display", Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.contact-form-card h3 span {
+  color: var(--pink, #d25380);
+}
+
+.form-description {
+  margin-bottom: 24px;
+  color: var(--muted, #77707b);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+.form-field label {
+  color: var(--heading, #543884);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--bg);
+  color: var(--text, #26222c);
+  font: 13px "Poppins", sans-serif;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-field textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--pink, #d25380);
+  box-shadow: 0 0 0 3px rgba(210, 83, 128, .12);
+}
+
+.contact-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--pink, #d25380);
+  color: #fff;
+  font: 600 14px "Helvetica World", Arial, sans-serif;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.contact-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(210, 83, 128, .25);
+}
+
+.contact-submit:disabled {
+  opacity: .65;
+  cursor: wait;
+  transform: none;
+}
+
+.contact-status {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font: 12px/1.6 "Poppins", sans-serif;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-form-card {
+    padding: 23px 18px;
+  }
+
+  .contact-title {
+    font-size: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-social,
+  .contact-submit {
+    transition: none;
+  }
+}
+
+/* FOOTER */
+
+footer {
+  padding: 25px 0;
+  background: #26222c;
+  color: #fff;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-row p {
+  font-size: 11px;
+  color: #d8cbdc;
+}
+
+.footer-row a {
+  color: #fff;
+}
+
+.footer-row a:hover {
+  color: #d25380;
+}
+
+/* ANIMASI */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity .6s, transform .6s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE UNTUK HP DAN TABLET */
+
+@media (max-width: 900px) {
+  .hero-container {
+    gap: 30px;
+  }
+
+  .hero-visual {
+    min-height: 350px;
+  }
+
+  .hero-greeting {
+    font-size: clamp(38px, 5vw, 52px);
+  }
+
+  .tag-creative {
+    right: -3%;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    min-height: auto;
+    padding: 30px 0 55px;
+  }
+
+  .hero-container {
+    width: min(100% - 36px, 500px);
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+@media (max-width: 680px) {
+  .hero-visual {
+    min-height: 350px;
+    max-width: 390px;
+    margin: 0 auto;
+  }
+
+  .hero-blob {
+    width: 78%;
+    height: 84%;
+    left: 11%;
+  }
+
+  .hero-photo {
+    width: min(72%, 290px);
+    height: 320px;
+    object-fit: cover;
+    object-position: center 28%;
+  }
+
+  .tag-creative {
+    right: 5%;
+    top: 48%;
+  }
+
+  .tag-teaching {
+    right: 7%;
+    bottom: 13%;
+  }
+
+  .tag-education {
+    left: 20%;
+    bottom: 1%;
+  }
+}
+
+  .sparkle {
+    font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle {
+    animation: none;
+  }
+
+  .hero-tag,
+  .hero-button,
+  .hero-button .button-arrow {
+    transition: none;
+  }
+}
+
+
+.site-header {
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.site-header.header-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* PENYESUAIAN GRID UNTUK HP */
+@media (max-width: 600px) {
+  .container {
+    width: min(100% - 36px, 1400px);
+  }
+
+  .hobbies-grid,
+  .skills-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hobbies-grid {
+    gap: 28px;
+  }
+
+  .skills-grid,
+  .portfolio-grid {
+    gap: 18px;
+  }
+}
+
+/* =================================
+   MY HOBBIES - KARTU HOBI 2 x 2
+================================= */
+
+.hobby-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  min-width: 0;
+}
+
+.hobby-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.hobby-card {
+  min-width: 0;
+  padding: 22px 18px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.hobby-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink);
+  box-shadow: 0 12px 25px rgba(210, 83, 128, 0.15);
+}
+
+.hobby-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--pink);
+  font-size: 26px;
+}
+
+.hobby-card h4 {
+  margin: 0 0 9px;
+  color: var(--heading);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.hobby-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.hobby-quote {
+  margin: 24px 0 0;
+  color: var(--pink);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* RESPONSIF TABLET DAN HP */
+@media (max-width: 900px) {
+  .hobby-panel {
+    padding: 22px;
+  }
+
+  .hobby-cards {
+    gap: 12px;
+  }
+
+  .hobby-card {
+    padding: 18px 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hobby-panel {
+    padding: 18px;
+  }
+
+  .hobby-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hobby-card {
+    padding: 20px;
+  }
+
+  .hobby-quote {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar container">
+    <a class="logo" href="#home">Diaz Hanum Mubarok</a>
+
+   <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portofolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle"
+        type="button" aria-label="Ganti mode warna">
+        <svg id="themeIcon" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path d="M19.5 15.5A8 8 0 0 1 8.5 4.5
+            A8.5 8.5 0 1 0 19.5 15.5Z"
+            fill="#f5a718"/>
+        </svg>
+      </button>
+
+      <button class="menu-toggle" id="menuToggle"
+        type="button" aria-label="Buka menu navigasi"
+        aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M4 6h16"/>
+          <path d="M4 12h16"/>
+          <path d="M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="hero-container">
+
+    <!-- BAGIAN KIRI: AREA FOTO -->
+    <div class="hero-visual">
+
+      <div class="hero-blob"></div>
+      <img
+        src="foto hanum.jpg"
+        alt="Foto profil Diaz Hanum Mubarok"
+        class="hero-photo"
+      >
+
+      <!-- Hiasan bintang -->
+      <span class="sparkle sparkle-one">✦</span>
+      <span class="sparkle sparkle-two">✦</span>
+      <span class="sparkle sparkle-three">✦</span>
+
+      <!-- LABEL HOVER: TIDAK BISA DIKLIK -->
+      <div class="hero-tag tag-creative">
+        Creative Learning
+      </div>
+
+      <div class="hero-tag tag-teaching">
+        Teaching
+      </div>
+
+      <div class="hero-tag tag-education">
+        Education
+      </div>
+    </div>
+
+    <!-- BAGIAN KANAN: TEKS PERKENALAN -->
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, I'm Hanum.</p>
+
+      <span class="hero-star" aria-hidden="true">✦</span>
+
+      <h1 class="hero-subtitle">
+        Future Educator &amp; Creative Learner.
+      </h1>
+
+      <a href="#about" class="hero-button">
+        <span class="button-label">Kenal Lebih Dekat</span>
+        <span class="button-arrow" aria-hidden="true">
+          ›
+        </span>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">A little introduction</p>
+      <h2 class="section-title">
+        About Me <span class="script">— My Journey</span> 🌷
+      </h2>
+      <p class="section-description">
+        Sedikit cerita tentang saya, perjalanan yang membentuk saya,
+        dan hal-hal yang saya sukai.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-intro-card reveal">
+        <p class="eyebrow">Halo, salam kenal!</p>
+        <h3>Senang bisa berbagi cerita denganmu.</h3>
+
+        <p>
+          Halo! Saya <strong>Diaz Hanum Mubarok</strong>, seorang mahasiswa
+          yang memiliki minat pada bidang pendidikan dan matematika.
+        </p>
+
+        <p>
+          Saya senang belajar hal baru, mengembangkan kreativitas,
+          serta mencoba memanfaatkan teknologi untuk menciptakan
+          pengalaman belajar yang lebih menarik.
+        </p>
+
+        <p>
+          Bagi saya, seorang pendidik bukan hanya bertugas menyampaikan
+          materi, tetapi juga membantu siswa menemukan cara belajar
+          yang sesuai dengan dirinya.
+        </p>
+
+        <h3 class="script">Diaz Hanum Mubarok</h3>
+      </div>
+
+      <!-- BAGIAN KANAN ABOUT: TIGA KOTAK NAVIGASI -->
+      <div class="about-cards">
+
+        <a href="#education" class="about-card">
+          <span class="about-card-icon" aria-hidden="true">♙</span>
+          <span>My Education</span>
+        </a>
+        
+        <a href="#experience" class="about-card">
+          <span class="about-card-icon" aria-hidden="true">✿</span>
+          <span>My Experiences</span>
+        </a>
+        
+        <a href="#hobbies" class="about-card">
+          <span class="about-card-icon" aria-hidden="true">♧</span>
+          <span>My Hobbies</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education-section" id="education">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Every step matters</p>
+      <h2 class="section-title">
+        My <span class="script">Education Journey</span>
+      </h2>
+      <p class="section-description">
+        Setiap tahap pendidikan adalah bagian penting dari perjalanan
+        saya hingga sampai di titik ini. Pengalaman tersebut membantu
+        saya terus belajar dan berkembang.
+      </p>
+    </div>
+
+    
+<div class="education-timeline">
+
+  <!-- GARIS BERGELOMBANG -->
+  <svg class="education-path"
+       viewBox="0 0 1000 170"
+       preserveAspectRatio="none"
+       aria-hidden="true">
+    <defs>
+      <marker id="educationArrow"
+              markerWidth="10"
+              markerHeight="10"
+              refX="7"
+              refY="5"
+              orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#a58ae8"/>
+      </marker>
+    </defs>
+
+    <path
+      d="M25 110
+         C80 35,120 35,170 90
+         S245 155,300 100
+         S390 35,445 90
+         S525 150,580 95
+         S665 35,720 90
+         S815 145,865 90
+         S935 65,975 65"
+      fill="none"
+      stroke="#d8c9ff"
+      stroke-width="8"
+      stroke-linecap="round"/>
+
+    <path
+      d="M25 110
+         C80 35,120 35,170 90
+         S245 155,300 100
+         S390 35,445 90
+         S525 150,580 95
+         S665 35,720 90
+         S815 145,865 90
+         S935 65,975 65"
+      fill="none"
+      stroke="#a58ae8"
+      stroke-width="2"
+      stroke-dasharray="5 7"
+      marker-end="url(#educationArrow)"/>
+  </svg>
+
+  <!-- SD -->
+  <article class="education-item education-one reveal">
+    <div class="education-school purple-school">
+      <span class="school-icon" aria-hidden="true">🏫</span>
+    </div>
+
+    <div class="education-card">
+      <span class="education-level">SD</span>
+      <h3>SD Negeri Suko 2</h3>
+      <p class="education-year">▦ 2011 — 2017</p>
+      <p class="education-description">
+        Menjadi langkah awal untuk mengenal dunia pendidikan
+        dan belajar banyak hal baru.
+      </p>
+    </div>
+  </article>
+
+  <!-- SMP -->
+  <article class="education-item education-two reveal">
+    <div class="education-school yellow-school">
+      <span class="school-icon" aria-hidden="true">🏫</span>
+    </div>
+
+    <div class="education-card">
+      <span class="education-level">SMP</span>
+      <h3>SMP Negeri 4</h3>
+      <p class="education-year">▦ 2017 — 2020</p>
+      <p class="education-description">
+        Mulai menemukan minat di bidang matematika
+        dan kegiatan sekolah.
+      </p>
+    </div>
+  </article>
+
+  <!-- SMA -->
+  <article class="education-item education-three reveal">
+    <div class="education-school purple-school">
+      <span class="school-icon" aria-hidden="true">🏫</span>
+    </div>
+
+    <div class="education-card">
+      <span class="education-level">SMA</span>
+      <h3>SMA Negeri 4</h3>
+      <p class="education-year">▦ 2020 — 2023</p>
+      <p class="education-description">
+        Memperdalam ilmu pengetahuan dan mempersiapkan diri
+        untuk jenjang pendidikan selanjutnya.
+      </p>
+    </div>
+  </article>
+
+  <!-- PERGURUAN TINGGI -->
+  <article class="education-item education-four reveal">
+    <div class="education-school yellow-school">
+      <span class="school-icon" aria-hidden="true">🏢</span>
+    </div>
+
+    <div class="education-card">
+      <span class="education-level college-level">
+        Perguruan Tinggi
+      </span>
+      <h3>Universitas Negeri Malang</h3>
+      <p class="education-year">▦ 2023 — Sekarang</p>
+      <p class="education-description">
+        Belajar, berkembang, dan berproses menjadi calon pendidik
+        yang siap memberikan manfaat bagi banyak orang.
+      </p>
+    </div>
+  </article>
+
+</div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experience-section" id="experience">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Learn by doing</p>
+      
+      <h2 class="section-title">
+        My <span class="script">Experiences</span>
+      </h2>
+      
+      <p class="section-description">
+        Setiap pengalaman memberikan pelajaran berharga dan menjadi bagian dari perjalanan saya untuk terus berkembang.
+      </p>
+    </div>
+    
+<!-- KARTU MY EXPERIENCES -->
+
+<div class="experience-grid">
+
+  <!-- TEACHING PRACTICE -->
+  <div class="experience-card">
+    <span class="experience-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="currentColor">
+        <circle cx="24" cy="10" r="6"/>
+        <circle cx="10" cy="18" r="5"/>
+        <circle cx="38" cy="18" r="5"/>
+        <path d="M13 37v-7c0-6 5-10 11-10s11 4 11 10v7H13Z"/>
+        <path d="M2 38v-7c0-5 3-8 8-8 2 0 4 1 5 2-2 3-3 6-3 10v3H2Z"/>
+        <path d="M46 38v-7c0-5-3-8-8-8-2 0-4 1-5 2 2 3 3 6 3 10v3h10Z"/>
+      </svg>
+    </span>
+
+    <h3>Teaching Practice</h3>
+
+    <p>
+      Melalui praktik mengajar, saya belajar mempersiapkan materi,
+      menyampaikan pembelajaran, berinteraksi dengan siswa,
+      dan menciptakan suasana belajar yang menyenangkan.
+    </p>
+  </div>
+
+  <!-- MY LITTLE BUSINESS -->
+  <div class="experience-card">
+    <span class="experience-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none">
+        <path d="M7 18h34v23H7z"
+              stroke="currentColor" stroke-width="3"
+              stroke-linejoin="round"/>
+        <path d="M4 18 9 6h30l5 12"
+              stroke="currentColor" stroke-width="3"
+              stroke-linejoin="round"/>
+        <path d="M4 18c0 5 8 5 8 0 0 5 8 5 8 0
+                 0 5 8 5 8 0 0 5 8 5 8 0
+                 0 5 8 5 8 0"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linejoin="round"/>
+        <path d="M17 41V28h14v13"
+              stroke="currentColor" stroke-width="3"
+              stroke-linejoin="round"/>
+      </svg>
+    </span>
+
+    <h3>My Little Business</h3>
+
+    <p>
+      Pengalaman berjualan mengajarkan saya tentang komunikasi
+      dengan pelanggan, promosi produk, kreativitas,
+      ketekunan, serta tanggung jawab.
+    </p>
+  </div>
+
+  <!-- LEARNING MEDIA DEVELOPMENT -->
+  <div class="experience-card">
+    <span class="experience-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none">
+        <rect x="5" y="7" width="38" height="27" rx="4"
+              stroke="currentColor" stroke-width="3"/>
+        <path d="M17 42h14M24 34v8"
+              stroke="currentColor" stroke-width="3"
+              stroke-linecap="round"/>
+        <path d="m20 15-5 5 5 5m8-10 5 5-5 5m-3-7-3 5"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+    </span>
+
+    <h3>Learning Media Development</h3>
+
+    <p>
+      Saya mengembangkan kreativitas dengan memadukan matematika,
+      desain, dan teknologi digital untuk merancang media
+      pembelajaran yang interaktif dan menarik.
+    </p>
+  </div>
+
+</div>
+
+</section>
+
+<!-- HOBBIES -->
+<section class="hobbies-section" id="hobbies">
+  <div class="container hobbies-grid">
+    <div class="hobbies-intro reveal">
+      <p class="eyebrow">Little joys, colorful days</p>
+      <h2>Fun <span class="script">Hobbies</span></h2>
+      <h3>Not all about study and working!</h3>
+
+      <p>
+        Di waktu luang, saya juga suka melakukan berbagai hal
+        yang menyenangkan, mulai dari bermain game hingga mencoba
+        aktivitas kreatif yang membuat hari-hari saya lebih berwarna.
+      </p>
+    </div>
+    
+<div class="hobby-panel reveal">
+  <div class="hobby-cards">
+
+    <!-- HOBBY 1: DESIGNING -->
+    <article class="hobby-card">
+      <div class="hobby-card-icon" aria-hidden="true">✎</div>
+      <h4>Designing</h4>
+      <p>
+        Mengeksplorasi ide dan membuat desain kreatif
+        melalui warna, bentuk, dan tata letak.
+      </p>
+    </article>
+
+    <!-- HOBBY 2: LEARNING -->
+    <article class="hobby-card">
+      <div class="hobby-card-icon" aria-hidden="true">✧</div>
+      <h4>Learning New Things</h4>
+      <p>
+        Mempelajari hal baru dan menambah wawasan
+        melalui berbagai pengalaman.
+      </p>
+    </article>
+
+    <!-- HOBBY 3: GAMING -->
+    <article class="hobby-card">
+      <div class="hobby-card-icon" aria-hidden="true">♡</div>
+      <h4>Gaming</h4>
+      <p>
+        Menikmati permainan di waktu luang untuk
+        bersantai dan mencari hiburan.
+      </p>
+    </article>
+
+    <!-- HOBBY 4: MUSIC -->
+    <article class="hobby-card">
+      <div class="hobby-card-icon" aria-hidden="true">♫</div>
+      <h4>Listening to Music</h4>
+      <p>
+        Menikmati musik untuk menemani aktivitas
+        dan menciptakan suasana yang menyenangkan.
+      </p>
+    </article>
+
+  </div>
+
+  <p class="hobby-quote">
+    “Make room for the things that make you feel alive.”
+  </p>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-heading center reveal">
+      <p class="eyebrow">What I bring to the table</p>
+      <h2 class="section-title">My <span class="script">Skills</span></h2>
+      <p class="section-description">
+        Berbagai kemampuan yang saya kembangkan untuk mendukung
+        pembelajaran, kreativitas, dan pengembangan diri.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <article class="skill-card reveal">
+        <span class="skill-number">01. TEACHING</span>
+        <h3>Teaching Skills</h3>
+        <p class="skill-subtitle">
+          Kemampuan mengajar dan merancang pembelajaran
+        </p>
+        <div class="skill-tags">
+          <span>Lesson Planning</span>
+          <span>Classroom Management</span>
+          <span>Teaching Strategies</span>
+          <span>Learning Material Preparation</span>
+        </div>
+        <p class="skill-description">
+          Menunjukkan kemampuan saya sebagai calon pendidik,
+          khususnya dalam merencanakan dan melaksanakan pembelajaran.
+        </p>
+      </article>
+
+      <article class="skill-card reveal">
+        <span class="skill-number">02. MENTORING</span>
+        <h3>Tutoring & Mentoring</h3>
+        <p class="skill-subtitle">
+          Pendampingan belajar dan les privat
+        </p>
+        <div class="skill-tags">
+          <span>Private Tutoring</span>
+          <span>Mathematics Tutoring</span>
+          <span>Student Mentoring</span>
+          <span>Individual Learning Support</span>
+        </div>
+        <p class="skill-description">
+          Mendampingi siswa secara individu maupun kelompok,
+          menjelaskan materi, dan menyesuaikan pendekatan
+          dengan kebutuhan belajar siswa.
+        </p>
+      </article>
+
+      <article class="skill-card reveal">
+        <span class="skill-number">03. EDUCATIONAL MEDIA</span>
+        <h3>Learning Media Development</h3>
+        <p class="skill-subtitle">
+          Pengembangan media pembelajaran
+        </p>
+        <div class="skill-tags">
+          <span>Interactive Learning Media</span>
+          <span>Discovery Learning</span>
+          <span>Educational Content</span>
+          <span>Learning Activity Design</span>
+        </div>
+        <p class="skill-description">
+          Memadukan materi pembelajaran dan kreativitas
+          untuk merancang pengalaman belajar yang interaktif
+          serta menarik.
+        </p>
+      </article>
+
+      <article class="skill-card reveal">
+        <span class="skill-number">04. DIGITAL DESIGN</span>
+        <h3>Digital & Web Design</h3>
+        <p class="skill-subtitle">
+          Desain digital dan pengembangan website
+        </p>
+        <div class="skill-tags">
+          <span>HTML</span>
+          <span>Canva</span>
+          <span>Microsoft Office</span>
+          <span>Presentation Design</span>
+        </div>
+        <p class="skill-description">
+          Menggunakan teknologi untuk membuat website,
+          materi presentasi, dan desain visual yang mendukung
+          kegiatan pendidikan.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="container">
+    <div class="section-heading center reveal">
+      <p class="eyebrow">A collection of my work</p>
+      <h2 class="section-title">
+        My <span class="script">Portofolio</span> ✧
+      </h2>
+      <p class="section-description">
+        Setiap karya memiliki cerita dan prosesnya sendiri.
+        Di sini saya mengumpulkan proyek yang berkaitan dengan
+        media pembelajaran, desain kreatif, dan kegiatan mengajar.
+      </p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-button active" data-filter="all">All Projects</button>
+      <button class="filter-button" data-filter="teaching">Teaching</button>
+      <button class="filter-button" data-filter="media">Educational Media</button>
+      <button class="filter-button" data-filter="design">Creative Design</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- TEACHING -->
+      <article class="portfolio-card reveal" data-category="teaching">
+        <img src="cover teaching.png"
+             alt="Kegiatan mengajar di kelas" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>Teaching</h3>
+            <p>Teaching · Education</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=teaching"
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="Lihat detail Teaching">↗</a>
+        </div>
+      </article>
+
+      <!-- TUTORING -->
+      <article class="portfolio-card reveal" data-category="teaching">
+        <img src="cover tutoring.png"
+             alt="Kegiatan bimbingan belajar" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>Tutoring</h3>
+            <p>Tutoring · Little Class</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=tutoring"
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="Lihat detail Tutoring">↗</a>
+        </div>
+      </article>
+
+      <!-- EDUCATIONAL MEDIA: SPACEMATH -->
+      <article class="portfolio-card reveal" data-category="media">
+        <img src="cover spacemath.png"
+             alt="SpaceMath, media pembelajaran matematika" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>SpaceMath</h3>
+            <p>Educational Media · Mathematics</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=spacemath"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Lihat detail SpaceMath">↗</a>
+        </div>
+      </article>
+
+      <!-- EDUCATIONAL MEDIA: SI MALA -->
+      <article class="portfolio-card reveal" data-category="media">
+        <img src="cover si mala.png"
+             alt="Si Mala, media pembelajaran interaktif" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>Si Mala</h3>
+            <p>Educational Media · Malang Raya</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=simala"
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="Lihat detail Si Mala">↗</a>
+        </div>
+      </article>
+
+      <!-- EDUCATIONAL MEDIA: EQUAMART -->
+      <article class="portfolio-card reveal" data-category="media">
+        <img src="cover equamart.jpg"
+             alt="EquaMart, media pembelajaran matematika" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>EquaMart</h3>
+            <p>Educational Media · Mathematics</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=equamart"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Lihat detail EquaMart">↗</a>
+        </div>
+      </article>
+
+      <!-- CREATIVE DESIGN: LKPD -->
+      <article class="portfolio-card reveal" data-category="design">
+        <img src="cover lkpd.png"
+             alt="Desain Lembar Kerja Peserta Didik" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>LKPD</h3>
+            <p>Creative Design · Worksheet</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=lkpd"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Lihat detail LKPD">↗</a>
+        </div>
+      </article>
+
+      <!-- CREATIVE DESIGN: MATHOPIA.BOOK -->
+      <article class="portfolio-card reveal" data-category="design">
+        <img src="cover mathopia book.png"
+             alt="Desain buku mathopia.book" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>mathopia.book</h3>
+            <p>Creative Design · Book Design</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=mathopia"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Lihat detail mathopia.book">↗</a>
+        </div>
+      </article>
+
+      <!-- CREATIVE DESIGN: BUKU CERITA DIGITAL -->
+      <article class="portfolio-card reveal" data-category="design">
+        <img src="cover buku cerita digital.png"
+             alt="Desain buku cerita digital" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>Buku Cerita Digital</h3>
+            <p>Creative Design · Digital Storybook</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=digital-storybooks"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Lihat detail Buku Cerita Digital">↗</a>
+        </div>
+      </article>
+
+      <!-- CREATIVE DESIGN: HIASAN KELAS -->
+      <article class="portfolio-card reveal" data-category="design">
+        <img src="cover hiasan kelas.png"
+             alt="Desain hiasan kelas" loading="lazy">
+        <div class="portfolio-info">
+          <div>
+            <h3>Hiasan Kelas</h3>
+            <p>Creative Design · Classroom Decoration</p>
+          </div>
+          <a class="project-button"
+             href="project-detail.html?project=classroom-decorations"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Lihat detail Hiasan Kelas">↗</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact-section">
+  <div class="container contact-grid">
+
+    <!-- BAGIAN KIRI: JUDUL DAN LOGO SOSIAL -->
+    <div class="contact-intro reveal">
+      <p class="eyebrow">LET'S CONNECT</p>
+
+      <h2 class="contact-title">
+        Let's Make
+        <span>Something Great.</span>
+      </h2>
+
+      <p class="contact-copy">
+        Terbuka untuk kesempatan mengajar, les privat,
+        kolaborasi pendidikan, dan proyek kreatif.
+        Mari bertukar ide dan menciptakan sesuatu yang bermanfaat.
+      </p>
+
+      <div class="contact-links">
+
+        <!-- WhatsApp -->
+        <a class="contact-social"
+           href="https://wa.me/6282140735146"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="WhatsApp"
+           title="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a9.8 9.8 0 0 0-8.45 14.77L2.2 22l5.4-1.42A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.07-1.11l-.29-.17-3.2.84.86-3.12-.19-.31A8 8 0 1 1 12 20Zm4.39-5.98c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.31.98 2.47c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.52.1.47-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a class="contact-social"
+           href="https://www.instagram.com/d.hanum_/"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Instagram"
+           title="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.5-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a class="contact-social"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=diazannummubarok@gmail.com"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Kirim email melalui Gmail"
+           title="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 4h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 3.1V18h18V7.1l-9 6.3-9-6.3Zm1.8-1.1L12 11.1 19.2 6H4.8Z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a class="contact-social"
+           href="https://www.linkedin.com/in/diaz-hanum-mubarok-625520371"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="LinkedIn"
+           title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5.2 3a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9h3.8v12H3.3V9Zm6.1 0H13v1.64h.05A4.06 4.06 0 0 1 16.7 8.7c3.9 0 4.6 2.57 4.6 5.9V21h-3.8v-5.68c0-1.35-.02-3.09-1.88-3.09-1.89 0-2.18 1.47-2.18 2.99V21H9.4V9Z"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- BAGIAN KANAN: FORMULIR PESAN -->
+    <div class="contact-form-card reveal">
+      <h3>Leave a <span>Message.</span></h3>
+
+      <p class="form-description">
+        Punya pertanyaan atau ingin berkolaborasi?
+        Kirim pesan melalui formulir berikut.
+      </p>
+
+      <form id="contactForm">
+
+        <div class="form-field">
+          <label for="contactName">Nama</label>
+          <input
+            type="text"
+            id="contactName"
+            name="name"
+            placeholder="Masukkan nama kamu"
+            maxlength="100"
+            autocomplete="name"
+            required>
+        </div>
+
+        <div class="form-field">
+          <label for="contactEmail">Email</label>
+          <input
+            type="email"
+            id="contactEmail"
+            name="email"
+            placeholder="nama@email.com"
+            maxlength="254"
+            autocomplete="email"
+            required>
+        </div>
+
+        <div class="form-field">
+          <label for="contactMessage">Pesan atau Pertanyaan</label>
+          <textarea
+            id="contactMessage"
+            name="message"
+            placeholder="Tuliskan pesan kamu di sini..."
+            maxlength="3000"
+            required></textarea>
+        </div>
+
+        <!-- Kolom jebakan untuk mengurangi spam -->
+        <div class="contact-honeypot" aria-hidden="true">
+          <label for="contactWebsite">Jangan isi kolom ini</label>
+          <input
+            type="text"
+            id="contactWebsite"
+            name="website"
+            tabindex="-1"
+            autocomplete="off">
+        </div>
+
+        <button type="submit" class="contact-submit" id="contactSubmit">
+          <span id="contactSubmitText">Kirim Pesan</span>
+          <span aria-hidden="true">↗</span>
+        </button>
+
+        <p
+          class="contact-status"
+          id="contactStatus"
+          role="status"
+          aria-live="polite"></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-row">
+    <a class="logo" href="#home" style="color:white">
+      hanum<span>.</span>
+    </a>
+
+    <p>Designed with care by Diaz Hanum Mubarok ♡</p>
+
+    <a href="#home">KEMBALI KE ATAS ↑</a>
+  </div>
+</footer>
+
+<!-- DIALOG DETAIL PORTOFOLIO -->
+<script>
+/* =========================================
+   JAVASCRIPT
+   ========================================= */
+
+// 1. MODE TERANG DAN GELAP
+const themeIcon = document.getElementById("themeIcon");
+const themeToggle = document.getElementById("themeToggle");
+const html = document.documentElement;
+
+function setTheme(theme) {
+  html.setAttribute("data-theme", theme);
+
+  if (theme === "dark") {
+    // Ikon matahari kuning
+    themeIcon.innerHTML = `
+      <circle cx="12" cy="12" r="4" fill="#f5a718"/>
+      <g stroke="#f5a718" stroke-width="2"
+         stroke-linecap="round">
+        <path d="M12 2v2"/>
+        <path d="M12 20v2"/>
+        <path d="M4.93 4.93l1.42 1.42"/>
+        <path d="M17.65 17.65l1.42 1.42"/>
+        <path d="M2 12h2"/>
+        <path d="M20 12h2"/>
+        <path d="M4.93 19.07l1.42-1.42"/>
+        <path d="M17.65 6.35l1.42-1.42"/>
+      </g>
+    `;
+    themeToggle.setAttribute("aria-label", "Aktifkan mode terang");
+    themeToggle.title = "Aktifkan mode terang";
+  } else {
+    // Ikon bulan sabit kuning
+    themeIcon.innerHTML = `
+      <path
+        d="M19.5 15.5A8 8 0 0 1 8.5 4.5
+           A8.5 8.5 0 1 0 19.5 15.5Z"
+        fill="#f5a718"
+      />
+    `;
+    themeToggle.setAttribute("aria-label", "Aktifkan mode gelap");
+    themeToggle.title = "Aktifkan mode gelap";
+  }
+
+  try {
+    localStorage.setItem("hanum-theme", theme);
+  } catch (error) {
+    // Abaikan jika penyimpanan tidak tersedia.
+  }
+}
+
+
+let savedTheme = "light";
+
+try {
+  const storedTheme = localStorage.getItem("hanum-theme");
+
+  if (storedTheme === "light" || storedTheme === "dark") {
+    savedTheme = storedTheme;
+  }
+} catch (error) {
+  // Gunakan mode terang jika penyimpanan tidak tersedia.
+}
+
+setTheme(savedTheme);
+
+themeToggle.addEventListener("click", () => {
+  const currentTheme = html.getAttribute("data-theme") || "light";
+  setTheme(currentTheme === "dark" ? "light" : "dark");
+});
+
+// 2. MENU NAVIGASI UNTUK HP
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function () {
+  const isOpen = navLinks.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute(
+    "aria-label",
+    isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+  );
+
+  // SVG tetap dipertahankan; hanya bentuk garis yang diubah.
+  const paths = menuToggle.querySelectorAll("path");
+
+  if (paths.length === 3) {
+    paths[0].setAttribute(
+      "d",
+      isOpen ? "M5 5l14 14" : "M4 6h16"
+    );
+    paths[1].setAttribute(
+      "d",
+      isOpen ? "M19 5L5 19" : "M4 12h16"
+    );
+    paths[2].style.display = isOpen ? "none" : "block";
+  }
+});
+
+document.querySelectorAll(".nav-links a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Buka menu navigasi");
+
+    const paths = menuToggle.querySelectorAll("path");
+    if (paths.length === 3) {
+      paths[0].setAttribute("d", "M4 6h16");
+      paths[1].setAttribute("d", "M4 12h16");
+      paths[2].setAttribute("d", "M4 18h16");
+      paths[2].style.display = "block";
+    }
+  });
+});
+
+// 3. FILTER PORTOFOLIO
+const filterButtons = document.querySelectorAll(".filter-button");
+const portfolioCards = document.querySelectorAll(".portfolio-card");
+
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach(function (item) {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    portfolioCards.forEach(function (card) {
+      const category = card.dataset.category;
+
+      if (filter === "all" || category === filter) {
+        card.classList.remove("hide");
+      } else {
+        card.classList.add("hide");
+      }
+    });
+  });
+});
+
+// 5. ANIMASI SAAT BAGIAN WEBSITE MUNCUL
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  revealElements.forEach(function (element) {
+    observer.observe(element);
+  });
+} else {
+  revealElements.forEach(function (element) {
+    element.classList.add("visible");
+  });
+}
+
+// 6. NAVIGASI AKTIF SESUAI BAGIAN YANG DIBUKA
+const sections = document.querySelectorAll("main section[id]");
+const navigationLinks = document.querySelectorAll(".nav-links a");
+
+function updateActiveNavigation() {
+  let currentSection = "home";
+
+  sections.forEach(function (section) {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop <= 140) {
+      currentSection = section.id;
+    }
+  });
+
+  navigationLinks.forEach(function (link) {
+    link.classList.toggle(
+      "active",
+      link.getAttribute("href") === "#" + currentSection
+    );
+  });
+}
+
+window.addEventListener("scroll", updateActiveNavigation);
+updateActiveNavigation();
+
+const siteHeader = document.getElementById("siteHeader");
+const homeSection = document.getElementById("home");
+
+if (siteHeader && homeSection) {
+  const homeObserver = new IntersectionObserver(
+    ([entry]) => {
+      siteHeader.classList.toggle(
+        "header-hidden",
+        entry.isIntersecting
+      );
+    },
+    {
+      threshold: 0.35
+    }
+  );
+
+  homeObserver.observe(homeSection);
+}
+
+
+/* ANIMASI HOBBIES SAAT DI-SCROLL */
+document.addEventListener("DOMContentLoaded", () => {
+  const panel = document.querySelector(".hobby-panel");
+
+  if (!panel) return;
+
+  panel.querySelectorAll(".progress span").forEach((bar) => {
+    const value = Number(bar.dataset.progress) || 0;
+
+    bar.style.setProperty(
+      "--progress",
+      Math.max(0, Math.min(100, value))
+    );
+  });
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible")
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    revealObserver.observe(el);
+  });
+
+
+  // Formulir Contact ke Google Apps Script.
+  const contactForm = document.getElementById("contactForm");
+  const contactStatus = document.getElementById("contactStatus");
+  const contactSubmit = document.getElementById("contactSubmit");
+  const contactSubmitText = document.getElementById("contactSubmitText");
+
+  const scriptURL = "https://script.google.com/macros/s/AKfycbx7-Uz0ckNLMMlhnmkpvaZPNwidqsyptgqFXDozlXmigOY9-qcWIZnzNBX1xEeFo37D/exec";
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) return;
+
+      const formData = {
+        name: document.getElementById("contactName").value.trim(),
+        email: document.getElementById("contactEmail").value.trim(),
+        message: document.getElementById("contactMessage").value.trim(),
+        website: document.getElementById("contactWebsite").value.trim()
+      };
+
+      if (formData.website) return;
+
+      contactSubmit.disabled = true;
+      contactSubmitText.textContent = "Mengirim...";
+      contactStatus.textContent = "Sedang mengirim pesan...";
+
+      try {
+        await fetch(scriptURL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        /*
+          Dengan mode no-cors, browser tidak mengizinkan kita
+          membaca respons server. Pesan di bawah berarti request
+          sudah dikirim browser, bukan konfirmasi bahwa Sheet
+          pasti berhasil menyimpan data.
+        */
+        contactStatus.textContent =
+          "Pesan sudah dikirim. Silakan periksa kembali jika belum ada balasan.";
+
+        contactForm.reset();
+
+      } catch (error) {
+        console.error("Gagal mengirim pesan:", error);
+
+        contactStatus.textContent =
+          "Pesan gagal dikirim. Periksa koneksi internet dan coba lagi.";
+
+      } finally {
+        contactSubmit.disabled = false;
+        contactSubmitText.textContent = "Kirim Pesan";
+      }
+    });
+  }
+
+});
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hobbyPanel = document.querySelector(".hobby-panel");
+
+  if (!hobbyPanel) return;
+
+  const hobbyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        hobbyPanel.classList.add("is-visible");
+
+        hobbyPanel.querySelectorAll(".progress span").forEach((bar) => {
+          bar.style.width = bar.dataset.progress + "%";
+        });
+
+        hobbyObserver.unobserve(hobbyPanel);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  hobbyObserver.observe(hobbyPanel);
+});
+</script>
+
+</body>
+</html>
