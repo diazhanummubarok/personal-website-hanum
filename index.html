@@ -1603,15 +1603,18 @@ footer {
   transform: translateY(0);
 }
 
-/* RESPONSIVE UNTUK HP DAN TABLET */
+/* =====================================
+   RESPONSIVE HERO SECTION
+===================================== */
 
+/* TABLET */
 @media (max-width: 900px) {
   .hero-container {
     gap: 30px;
   }
 
   .hero-visual {
-    min-height: 350px;
+    height: 420px;
   }
 
   .hero-greeting {
@@ -1619,60 +1622,148 @@ footer {
   }
 
   .tag-creative {
-    right: -3%;
+    right: 0;
   }
 }
 
+/* HP */
 @media (max-width: 680px) {
+
   .hero {
     min-height: auto;
     padding: 30px 0 55px;
   }
 
   .hero-container {
-    width: min(100% - 36px, 500px);
+    width: min(100% - 36px, 420px);
     grid-template-columns: 1fr;
     gap: 25px;
   }
 
-@media (max-width: 680px) {
+  /* AREA FOTO */
   .hero-visual {
-    min-height: 350px;
-    max-width: 390px;
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    height: 420px;
+    min-height: 0;
     margin: 0 auto;
   }
 
+  /* LENGKUNGAN UNGU */
   .hero-blob {
-    width: 78%;
-    height: 84%;
-    left: 11%;
+    width: 76%;
+    height: 88%;
+    left: 12%;
+    bottom: 0;
   }
 
+  /* FOTO PROFIL */
   .hero-photo {
-    width: min(72%, 290px);
-    height: 320px;
+    width: 68%;
+    height: 78%;
+    left: 16%;
+    bottom: 0;
+
     object-fit: cover;
-    object-position: center 28%;
+    object-position: center 23%;
+    border-radius: 50% 50% 0 0;
   }
 
+  /* LABEL CREATIVE LEARNING */
   .tag-creative {
-    right: 5%;
-    top: 48%;
+    top: 30%;
+    right: -2%;
+    left: auto;
   }
 
+  /* LABEL TEACHING */
   .tag-teaching {
-    right: 7%;
-    bottom: 13%;
+    right: -1%;
+    bottom: 17%;
   }
 
+  /* LABEL EDUCATION */
   .tag-education {
-    left: 20%;
+    left: 8%;
     bottom: 1%;
+  }
+
+  /* BINTANG */
+  .sparkle {
+    font-size: 34px;
+  }
+
+  .sparkle-one {
+    left: -2%;
+    bottom: 18%;
+  }
+
+  .sparkle-two {
+    right: -1%;
+    top: 35%;
+  }
+
+  .sparkle-three {
+    right: 24%;
+    top: 5%;
+  }
+
+  /* TEKS PERKENALAN */
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-greeting {
+    font-size: clamp(38px, 10vw, 48px);
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-star {
+    top: -30px;
+    right: 2%;
+    font-size: 38px;
+  }
+
+  .hero-button {
+    margin-top: 45px;
   }
 }
 
-  .sparkle {
-    font-size: 34px;
+/* HP KECIL */
+@media (max-width: 380px) {
+
+  .hero-visual {
+    height: 380px;
+    max-width: 330px;
+  }
+
+  .hero-tag {
+    min-width: 105px;
+    padding: 7px 11px;
+    font-size: 10px;
+  }
+
+  .tag-creative {
+    top: 30%;
+    right: -1%;
+  }
+
+  .tag-teaching {
+    right: 0;
+    bottom: 17%;
+  }
+
+  .tag-education {
+    left: 8%;
+  }
+
+  .hero-greeting {
+    font-size: 39px;
   }
 }
 
